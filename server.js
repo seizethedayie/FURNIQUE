@@ -17,7 +17,6 @@ const app = express();
 
 const PORT = process.env.PORT || 3000;
 
-// Konfigurasi database MySQL/TiDB melalui environment variables.
 // Untuk TiDB Cloud Starter gunakan port 4000 dan DB_SSL=true.
 const dbConfig = {
     host: process.env.DB_HOST || 'localhost',
