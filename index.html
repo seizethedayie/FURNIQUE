@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#242321">
+  <meta name="description" content="FURNIQUE — Crafted for Living, Designed for You. Temukan furnitur berkualitas untuk ruang yang lebih bermakna.">
+  <title>FURNIQUE — Crafted for Living</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <style>
+    :root{--cream:#f6f3ec;--ivory:#fbf9f4;--beige:#e8ddce;--oak:#a77b50;--brown:#49382b;--ink:#242321;--muted:#827d75;--white:#fff;--line:#e9e4dc;--green:#657b62;--red:#a64b42;--shadow:0 18px 50px rgba(42,34,26,.09);--radius:4px;--font:'DM Sans',sans-serif;--display:'Manrope',sans-serif}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--ivory);color:var(--ink);font-family:var(--font);font-size:14px;line-height:1.6}button,input,select,textarea{font:inherit}button{cursor:pointer}a{color:inherit;text-decoration:none}img{display:block;max-width:100%}.hidden{display:none!important}.container{width:min(1240px,calc(100% - 56px));margin:auto}.eyebrow{font-size:10px;letter-spacing:2.4px;text-transform:uppercase;color:var(--oak);font-weight:700}.section{padding:76px 0}.section-head{text-align:center;margin-bottom:32px}.section-head h2,.page-heading h1{font:600 clamp(27px,3vw,38px)/1.2 var(--display);letter-spacing:-1.3px;margin:8px 0}.section-head p,.page-heading p{color:var(--muted);margin:8px auto 0;max-width:540px}.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;border:1px solid var(--ink);background:var(--ink);color:#fff;padding:12px 21px;font-size:11px;font-weight:700;letter-spacing:.7px;text-transform:uppercase;transition:.25s;border-radius:2px}.btn:hover{background:var(--oak);border-color:var(--oak);transform:translateY(-2px)}.btn-light{background:transparent;color:var(--ink);border-color:#bcb4a9}.btn-light:hover{color:white}.btn-small{padding:9px 13px;font-size:10px}.icon-btn{border:0;background:none;color:inherit;padding:8px;font-size:16px;position:relative}.count{position:absolute;right:0;top:0;background:var(--oak);color:#fff;border-radius:50%;font-size:9px;min-width:16px;height:16px;display:grid;place-items:center}.announcement{background:var(--brown);color:#f7f1e8;text-align:center;padding:7px 12px;font-size:10px;letter-spacing:1.4px}.navbar{height:72px;background:var(--ink);color:#fff;display:flex;align-items:center;position:sticky;top:0;z-index:50}.nav-inner{display:flex;align-items:center;justify-content:space-between;gap:22px}.brand{display:inline-flex;align-items:center;gap:9px;color:inherit;flex-shrink:0}.brand-mark{width:34px;height:34px}.brand-name{font:800 19px/1 var(--display);letter-spacing:2px}.brand-tag{display:block;font-size:7px;letter-spacing:1.7px;color:#c5b8a7;margin-top:4px}.nav-links{display:flex;align-items:center;gap:27px}.nav-links a{font-size:11px;color:#e8e4de;transition:.2s}.nav-links a:hover{color:#d5ad82}.nav-actions{display:flex;align-items:center;gap:7px}.nav-actions .icon-btn{font-size:14px}.hamburger{display:none}.hero{min-height:510px;display:flex;align-items:center;background:linear-gradient(90deg,rgba(246,239,227,.92) 0%,rgba(246,239,227,.76) 37%,rgba(246,239,227,.03) 75%),url('https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=2000&q=88') center/cover}.hero-content{max-width:500px;padding:75px 0}.hero h1{font:500 clamp(43px,6vw,72px)/1.06 var(--display);letter-spacing:-3.4px;margin:15px 0}.hero h1 em{font-weight:400;color:var(--oak)}.hero p{max-width:390px;color:#62584e;font-size:14px;margin:0 0 25px}.hero-actions{display:flex;gap:10px;flex-wrap:wrap}.hero-note{margin-top:45px;color:#786c5e;font-size:10px;letter-spacing:1.2px}.category-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:13px}.category-card{position:relative;overflow:hidden;background:var(--beige);height:180px;cursor:pointer}.category-card img{width:100%;height:100%;object-fit:cover;transition:.5s}.category-card:hover img{transform:scale(1.06)}.category-card:after{content:"";position:absolute;inset:35% 0 0;background:linear-gradient(transparent,rgba(0,0,0,.58))}.category-card span{position:absolute;z-index:1;bottom:14px;left:14px;color:#fff;font:600 13px var(--display)}.product-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px 16px}.product-card{min-width:0;position:relative}.product-image{height:260px;background:#f1ece4;position:relative;overflow:hidden;cursor:pointer}.product-image img{width:100%;height:100%;object-fit:cover;mix-blend-mode:multiply;transition:transform .5s}.product-card:hover .product-image img{transform:scale(1.045)}.product-tag{position:absolute;top:12px;left:12px;background:var(--ink);color:white;padding:5px 8px;font-size:8px;letter-spacing:1px;text-transform:uppercase}.wish{position:absolute;right:10px;top:9px;background:#fff;border:0;width:31px;height:31px;border-radius:50%;color:var(--brown)}.wish.active{color:#b44b42}.product-info{padding:13px 2px}.product-category{font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:1px}.product-title{font:600 14px var(--display);margin:4px 0}.price{font-weight:700;color:var(--brown);font-size:13px}.old-price{text-decoration:line-through;color:#a8a198;font-size:11px;font-weight:400;margin-left:7px}.product-actions{display:flex;gap:7px;margin-top:11px}.product-actions .btn{flex:1}.center-action{text-align:center;margin-top:35px}.space-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.space-card{height:330px;position:relative;overflow:hidden;background:var(--beige)}.space-card img{width:100%;height:100%;object-fit:cover;transition:.5s}.space-card:hover img{transform:scale(1.04)}.space-card:after{content:"";position:absolute;inset:40% 0 0;background:linear-gradient(transparent,rgba(0,0,0,.58))}.space-copy{position:absolute;bottom:23px;left:24px;color:white;z-index:1}.space-copy h3{font:600 22px var(--display);margin:0 0 5px}.space-copy a{font-size:10px;text-transform:uppercase;letter-spacing:1.3px;border-bottom:1px solid #fff;padding-bottom:4px}.custom-banner{background:#e9e0d4;display:grid;grid-template-columns:1fr 1fr;min-height:360px}.custom-banner img{width:100%;height:100%;object-fit:cover}.custom-copy{padding:55px clamp(25px,6vw,85px);display:flex;flex-direction:column;justify-content:center}.custom-copy h2{font:600 clamp(30px,4vw,45px)/1.1 var(--display);letter-spacing:-1.5px;margin:12px 0}.custom-copy p{color:#71675c;max-width:390px;margin:0 0 22px}.features{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}.feature{text-align:center;padding:25px 16px;border:1px solid var(--line)}.feature i{font-size:23px;color:var(--oak);margin-bottom:13px}.feature h3{font:600 13px var(--display);margin:4px 0}.feature p{font-size:11px;color:var(--muted);margin:0}.newsletter{background:var(--cream);padding:48px 20px;text-align:center}.newsletter h2{font:600 28px var(--display);margin:7px}.newsletter p{color:var(--muted)}.newsletter-form{display:flex;max-width:440px;margin:20px auto 0}.newsletter-form input{flex:1;min-width:0;border:1px solid #d8d0c5;background:#fff;padding:13px}.footer{background:var(--ink);color:#eee8df;padding:55px 0 20px}.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1.2fr;gap:40px}.footer p,.footer a{color:#b8b1a8;font-size:11px}.footer h4{font:600 12px var(--display);letter-spacing:.8px;margin:0 0 15px}.footer-links{display:grid;gap:9px}.footer-bottom{border-top:1px solid #494642;margin-top:40px;padding-top:17px;display:flex;justify-content:space-between;color:#aaa;font-size:10px}
+    /* App views */
+    .view{display:none;min-height:65vh}.view.active{display:block}.page-top{padding:55px 0 35px;background:var(--cream)}.page-heading{text-align:center}.breadcrumb{font-size:10px;color:var(--muted);margin-bottom:10px}.shop-layout{display:grid;grid-template-columns:220px 1fr;gap:35px;padding-top:38px;padding-bottom:75px}.filters{border-right:1px solid var(--line);padding-right:22px}.filter-group{padding:0 0 22px;margin-bottom:22px;border-bottom:1px solid var(--line)}.filter-group h4{font:700 11px var(--display);text-transform:uppercase;letter-spacing:1px;margin:0 0 13px}.filter-group label{display:flex;gap:8px;align-items:center;color:#6f6961;font-size:12px;margin:9px 0;cursor:pointer}.filter-group input[type=checkbox]{accent-color:var(--oak)}.filter-group input[type=range]{width:100%;accent-color:var(--oak)}.shop-toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:22px}.search-box{display:flex;border-bottom:1px solid #bdb5aa;max-width:280px;flex:1}.search-box input{border:0;background:transparent;padding:10px 4px;outline:none;width:100%;font-size:12px}.select{border:1px solid var(--line);background:#fff;padding:10px 12px;color:#615a52;font-size:11px}.pagination{display:flex;justify-content:center;gap:7px;margin-top:30px}.pagination button{border:1px solid var(--line);background:white;padding:8px 12px}.pagination button.active{background:var(--ink);color:white}.empty-state{text-align:center;padding:60px 15px;color:var(--muted);grid-column:1/-1}.empty-state i{font-size:34px;color:#b7aa99;margin-bottom:15px}.detail-layout{display:grid;grid-template-columns:1.1fr .9fr;gap:55px;padding:55px 0}.detail-main-img{height:510px;background:#f0ebe3}.detail-main-img img{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply}.detail-thumbs{display:flex;gap:10px;margin-top:12px}.detail-thumbs img{width:76px;height:76px;object-fit:cover;background:#eee8df;cursor:pointer}.detail-info{padding-top:18px}.detail-info h1{font:600 34px/1.2 var(--display);letter-spacing:-1px;margin:10px 0}.detail-price{font-size:20px;font-weight:700;color:var(--brown);margin:16px 0}.detail-info p{color:var(--muted)}.spec-list{border-top:1px solid var(--line);margin:25px 0}.spec-row{display:flex;justify-content:space-between;padding:11px 0;border-bottom:1px solid var(--line);font-size:12px}.qty{display:inline-flex;border:1px solid var(--line);align-items:center}.qty button{border:0;background:#fff;padding:9px 13px}.qty span{min-width:32px;text-align:center}.detail-buttons{display:flex;gap:10px;margin:20px 0}.cart-layout,.checkout-layout{display:grid;grid-template-columns:1.5fr .8fr;gap:35px;padding:45px 0 75px}.cart-row{display:grid;grid-template-columns:105px 1fr auto;gap:18px;align-items:center;padding:16px 0;border-bottom:1px solid var(--line)}.cart-row img{width:105px;height:100px;object-fit:cover;background:#eee8df}.cart-row h4{margin:0;font:600 14px var(--display)}.cart-row p{margin:4px 0;color:var(--muted);font-size:11px}.cart-row .remove{border:0;background:none;color:#a66a60;font-size:11px;margin-top:7px}.summary-card,.form-card{background:white;border:1px solid var(--line);padding:25px;height:max-content}.summary-card h3,.form-card h3{font:600 17px var(--display);margin:0 0 18px}.summary-line{display:flex;justify-content:space-between;margin:12px 0;color:#716a62;font-size:12px}.summary-total{border-top:1px solid var(--line);padding-top:15px;margin-top:18px;font-weight:700;color:var(--ink);font-size:15px}.summary-card .btn{width:100%;margin-top:17px}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.field{display:grid;gap:6px;margin-bottom:14px}.field.full{grid-column:1/-1}.field label{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:#746c62;font-weight:700}.field input,.field select,.field textarea{width:100%;border:1px solid #ded8cf;background:#fff;padding:12px;outline:none;font-size:12px}.field input:focus,.field textarea:focus,.field select:focus{border-color:var(--oak)}.field textarea{min-height:100px;resize:vertical}.radio-card{border:1px solid var(--line);padding:12px;margin:8px 0;display:flex;gap:10px;align-items:center;font-size:12px;cursor:pointer}.radio-card:has(input:checked){border-color:var(--oak);background:#faf6f0}.status-pill{display:inline-block;padding:5px 9px;background:#eee8df;color:#725b42;font-size:9px;text-transform:uppercase;letter-spacing:.7px;border-radius:20px}.status-pill.success{background:#e5eee3;color:#4f704c}.status-pill.warning{background:#f7eddc;color:#916a2f}.status-pill.danger{background:#f5e5e2;color:#9c5148}.timeline{display:flex;justify-content:space-between;gap:8px;margin:25px 0}.timeline-step{flex:1;text-align:center;position:relative;font-size:9px;color:var(--muted)}.timeline-step:before{content:"";display:block;width:13px;height:13px;border-radius:50%;background:#ddd5ca;margin:0 auto 8px;position:relative;z-index:1}.timeline-step.done:before{background:var(--oak);box-shadow:0 0 0 4px #eee2d4}.timeline-step:not(:last-child):after{content:"";position:absolute;height:1px;background:#ddd5ca;left:55%;right:-45%;top:6px}.auth-wrap{padding:55px 0;min-height:calc(100vh - 100px);display:grid;place-items:center;background:#f3f0e9}.auth-card{width:min(960px,calc(100% - 40px));min-height:550px;background:white;display:grid;grid-template-columns:1fr 1fr;box-shadow:var(--shadow)}.auth-image{background:linear-gradient(0deg,rgba(28,23,18,.18),transparent),url('https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1000&q=85') center/cover;position:relative}.auth-image .brand{position:absolute;top:28px;left:28px;color:var(--ink);background:rgba(255,255,255,.83);padding:9px 12px}.auth-form{padding:48px clamp(25px,5vw,65px);display:flex;flex-direction:column;justify-content:center}.auth-form>.brand{color:var(--ink);justify-content:center;margin-bottom:25px}.auth-form h2{font:700 25px var(--display);margin:0 0 5px}.auth-form .sub{color:var(--muted);font-size:12px;margin:0 0 22px}.auth-form .btn{width:100%;margin-top:5px}.auth-switch{text-align:center;font-size:11px;color:var(--muted);margin-top:17px}.auth-switch button,.text-link{border:0;background:none;color:var(--brown);font-weight:700;text-decoration:underline}.auth-error{color:var(--red);font-size:11px;min-height:16px;margin:4px 0}.dashboard-shell{display:grid;grid-template-columns:245px 1fr;min-height:calc(100vh - 72px)}.sidebar{background:#292825;color:#eee8df;padding:28px 18px}.sidebar .brand{padding:0 12px 28px}.side-label{font-size:9px;letter-spacing:1.7px;color:#918a80;text-transform:uppercase;padding:12px}.side-nav{display:grid;gap:4px}.side-nav button{background:transparent;border:0;color:#c9c2b8;text-align:left;padding:11px 12px;font-size:12px;border-radius:3px;display:flex;align-items:center;gap:12px}.side-nav button:hover,.side-nav button.active{background:#48433c;color:#fff}.side-nav button i{width:16px}.dash-main{padding:32px;min-width:0;background:#f7f5f0}.dash-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:25px}.dash-top h1{font:600 25px var(--display);margin:0}.dash-top p{margin:4px 0;color:var(--muted);font-size:11px}.stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:22px}.stat-card{background:white;border:1px solid var(--line);padding:18px}.stat-card span{font-size:10px;color:var(--muted)}.stat-card strong{display:block;font:700 23px var(--display);margin:7px 0 2px}.stat-card small{font-size:9px;color:var(--green)}.customer-stat{display:flex;align-items:center;justify-content:space-between;gap:12px}.customer-stat-icon{width:42px;height:42px;min-width:42px;border-radius:10px;background:#f2ece4;color:var(--brown);display:grid;place-items:center;font-size:17px}.customer-stat-copy{min-width:0}.customer-stat-copy span{display:block}.customer-stat-copy strong{margin:7px 0 2px}.dash-card{background:white;border:1px solid var(--line);padding:20px;margin-bottom:18px;min-width:0}.dash-card h3{font:600 15px var(--display);margin:0 0 16px}.table-wrap{overflow-x:auto}table{width:100%;border-collapse:collapse;min-width:600px}th,td{text-align:left;padding:12px 10px;border-bottom:1px solid #eee9e1;font-size:11px;white-space:nowrap}th{font-size:9px;color:#8c8378;text-transform:uppercase;letter-spacing:1px;background:#fbfaf7}td .btn{padding:6px 9px;font-size:9px}.dash-two{display:grid;grid-template-columns:1.4fr 1fr;gap:18px}.bar-chart{height:190px;display:flex;align-items:end;gap:13px;padding:10px 5px 0;border-bottom:1px solid var(--line)}.bar{flex:1;background:#c6a17b;min-width:12px;position:relative;border-radius:2px 2px 0 0}.bar span{position:absolute;bottom:-23px;left:50%;transform:translateX(-50%);font-size:9px;color:var(--muted)}.bar em{position:absolute;top:-18px;left:50%;transform:translateX(-50%);font-size:8px;font-style:normal;color:var(--muted)}.mobile-side-toggle{display:none}
+    .toast{position:fixed;right:22px;bottom:22px;background:var(--ink);color:#fff;padding:13px 18px;z-index:1000;box-shadow:var(--shadow);font-size:12px;max-width:320px;animation:slide .25s ease}.toast.error{background:#8f4039}@keyframes slide{from{transform:translateY(15px);opacity:0}to{transform:none;opacity:1}}.modal-backdrop{position:fixed;inset:0;background:rgba(25,22,19,.55);z-index:200;display:grid;place-items:center;padding:20px}.modal{background:#fff;width:min(520px,100%);max-height:85vh;overflow:auto;padding:28px;position:relative}.modal-close{position:absolute;right:15px;top:12px;border:0;background:none;font-size:20px}.demo-note{background:#f5ecdf;border:1px solid #e6d7c3;padding:10px 13px;font-size:10px;color:#725b42;margin:12px 0}.profile-menu{position:absolute;right:25px;top:62px;background:white;color:var(--ink);box-shadow:var(--shadow);width:180px;padding:8px;z-index:80}.profile-menu button{display:block;width:100%;padding:10px;border:0;background:white;text-align:left;font-size:11px}.profile-menu button:hover{background:var(--cream)}
+    @media(max-width:1000px){.nav-links{gap:14px}.nav-links a{font-size:10px}.category-grid{grid-template-columns:repeat(3,1fr)}.product-image{height:220px}.stat-grid{grid-template-columns:repeat(2,1fr)}.dashboard-shell{grid-template-columns:210px 1fr}.footer-grid{gap:22px}}
+    @media(max-width:760px){.container{width:min(100% - 32px,600px)}.navbar{height:64px}.hamburger{display:inline-flex}.nav-links{display:none;position:absolute;top:64px;left:0;right:0;background:var(--ink);padding:20px 25px 25px;flex-direction:column;align-items:flex-start;gap:17px}.nav-links.open{display:flex}.nav-actions{margin-left:auto}.nav-actions .search-trigger{display:none}.brand-name{font-size:17px}.hero{min-height:490px;background-position:58% center}.hero-content{padding:65px 0}.hero h1{font-size:48px}.section{padding:55px 0}.category-grid{grid-template-columns:repeat(2,1fr)}.category-card{height:155px}.product-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 11px}.product-image{height:190px}.product-title{font-size:12px}.product-actions .btn{padding:8px 6px;font-size:8px}.space-grid{grid-template-columns:1fr}.space-card{height:260px}.custom-banner{grid-template-columns:1fr}.custom-banner img{height:240px}.custom-copy{padding:35px 25px}.features{grid-template-columns:repeat(2,1fr)}.footer-grid{grid-template-columns:1fr 1fr}.footer-grid>div:first-child{grid-column:1/-1}.footer-bottom{gap:10px;flex-direction:column}.shop-layout{grid-template-columns:1fr;gap:20px}.filters{border:1px solid var(--line);padding:15px}.filter-row{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.filter-group{margin:0;padding:0;border:0}.shop-toolbar{flex-wrap:wrap}.detail-layout{grid-template-columns:1fr;gap:20px;padding:30px 0}.detail-main-img{height:340px}.cart-layout,.checkout-layout{grid-template-columns:1fr;gap:20px;padding:25px 0 55px}.auth-card{grid-template-columns:1fr;max-width:460px}.auth-image{height:190px}.auth-image .brand{top:15px;left:15px}.auth-form{padding:32px 26px}.dashboard-shell{grid-template-columns:1fr}.sidebar{display:none;position:fixed;top:64px;bottom:0;left:0;width:260px;z-index:90;overflow:auto}.sidebar.open{display:block}.mobile-side-toggle{display:inline-flex}.dash-main{padding:20px 14px}.dash-two{grid-template-columns:1fr}.stat-grid{gap:8px}.stat-card{padding:13px}.stat-card strong{font-size:19px}.dash-top h1{font-size:21px}.timeline{overflow-x:auto}.timeline-step{min-width:75px}.cart-row{grid-template-columns:75px 1fr auto;gap:10px}.cart-row img{width:75px;height:75px}.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}}
+    @media(max-width:420px){.nav-actions{gap:0}.hero h1{font-size:42px}.product-image{height:160px}.category-card{height:135px}.footer-grid{gap:20px}.detail-buttons{flex-direction:column}.stat-grid{grid-template-columns:1fr 1fr}}
+  </style>
+</head>
+<body>
+  <div class="announcement">COMPLIMENTARY DELIVERY FOR ORDERS ABOVE RP 5.000.000</div>
+  <header class="navbar" id="navbar">
+    <div class="container nav-inner">
+      <button class="icon-btn hamburger" id="hamburger" aria-label="Buka menu"><i class="fa-solid fa-bars"></i></button>
+      <a href="#" class="brand" onclick="showView('home');return false" aria-label="Beranda FURNIQUE">
+        <svg class="brand-mark" viewBox="0 0 44 44" fill="none" aria-hidden="true"><path d="M7 5h29v7H14v8h18v7H14v12H7V5Z" fill="#C49A70"/><path d="M19 20h18v19H19V20Z" stroke="#F6F3EC" stroke-width="2"/><path d="M24 25h8v9h-8z" fill="#F6F3EC"/></svg>
+        <span><span class="brand-name">FURNIQUE</span><span class="brand-tag">CRAFTED FOR LIVING</span></span>
+      </a>
+      <nav class="nav-links" id="navLinks">
+        <a href="#" onclick="showView('home');return false">Beranda</a>
+        <a href="#" onclick="showView('shop');return false">Katalog</a>
+        <a href="#categories" onclick="showView('home');setTimeout(()=>document.getElementById('categories')?.scrollIntoView(),80);return false">Kategori</a>
+        <a href="#" onclick="showView('custom');return false">Pesanan Kustom</a>
+        <a href="#about" onclick="showView('home');return false">About Us</a>
+        <a href="#contact" onclick="showView('home');setTimeout(()=>document.getElementById('contact')?.scrollIntoView(),80);return false">Contact</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="icon-btn search-trigger" aria-label="Cari" onclick="showView('shop');setTimeout(()=>document.getElementById('shopSearch')?.focus(),100)"><i class="fa-solid fa-magnifying-glass"></i></button>
+        <button class="icon-btn" aria-label="Keranjang" onclick="showView('cart')"><i class="fa-solid fa-bag-shopping"></i><span class="count" id="cartCount">0</span></button>
+        <button class="icon-btn" aria-label="Akun" onclick="handleProfileClick()"><i class="fa-regular fa-user"></i></button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HOME -->
+    <section class="view active" id="view-home">
+      <section class="hero"><div class="container"><div class="hero-content">
+        <span class="eyebrow">FURNITURE FOR SLOW LIVING</span>
+        <h1>Quiet spaces,<br><em>beautiful</em> living.</h1>
+        <p>Discover thoughtfully crafted furniture that brings warmth, comfort, and timeless elegance into your home.</p>
+        <div class="hero-actions"><button class="btn" onclick="showView('shop')">Lihat Koleksi <i class="fa-solid fa-arrow-right"></i></button><button class="btn btn-light" onclick="document.getElementById('categories').scrollIntoView({behavior:'smooth'})">Jelajahi Lebih Lanjut</button></div>
+        <div class="hero-note">NATURAL MATERIALS &nbsp;·&nbsp; TIMELESS DESIGN &nbsp;·&nbsp; MADE TO LAST</div>
+      </div></div></section>
+      <section class="section" id="categories"><div class="container"><div class="section-head"><span class="eyebrow">TEMUKAN GAYAMU</span><h2>Belanja Berdasarkan Kategori</h2><p>Furnitur yang membuat setiap sudut terasa seperti rumah.</p></div><div class="category-grid" id="homeKategori"></div></div></section>
+      <section class="section" style="background:#fff"><div class="container"><div class="section-head"><span class="eyebrow">PILIHAN TERBAIK</span><h2>Produk Terlaris</h2><p>Pilihan furnitur favorit untuk menemani keseharian Anda.</p></div><div class="product-grid" id="bestSellerGrid"></div><div class="center-action"><button class="btn btn-light" onclick="showView('shop')">View All Produk <i class="fa-solid fa-arrow-right"></i></button></div></div></section>
+      <section class="section"><div class="container"><div class="section-head"><span class="eyebrow">FRESH FROM THE WORKSHOP</span><h2>Produk Terbaru</h2><p>Thoughtful details, natural textures, and fresh perspectives.</p></div><div class="product-grid" id="newArrivalGrid"></div></div></section>
+      <section class="section" style="background:var(--cream)"><div class="container"><div class="section-head"><span class="eyebrow">RUANG UNTUK MERASA DI RUMAH</span><h2>Jelajahi Berdasarkan Ruang</h2></div><div class="space-grid" id="spaceGrid"></div></div></section>
+      <section class="section"><div class="container"><div class="custom-banner"><img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1000&q=85" alt="Interior furnitur custom" loading="lazy"><div class="custom-copy"><span class="eyebrow">DIRANCANG UNTUK RUANG ANDA</span><h2>Ide Anda,<br>sentuhan keahlian kami.</h2><p>Wujudkan furnitur yang sesuai dengan ruang, gaya, dan kebutuhan Anda. Ceritakan ide Anda, dan biarkan tim kami membantu mewujudkannya.</p><div><button class="btn" onclick="showView('custom')">Rancang Furnitur Anda <i class="fa-solid fa-arrow-right"></i></button></div></div></div></div></section>
+      <section class="section" id="about"><div class="container"><div class="section-head"><span class="eyebrow">KEUNGGULAN FURNIQUE</span><h2>Dibuat untuk menemani hidup.</h2><p>Kami percaya furnitur yang baik harus nyaman digunakan sekaligus indah dipandang.</p></div><div class="features"><div class="feature"><i class="fa-solid fa-medal"></i><h3>Kualitas Premium</h3><p>Material pilihan dengan pengerjaan yang teliti.</p></div><div class="feature"><i class="fa-regular fa-clock"></i><h3>Desain Tak Lekang Waktu</h3><p>Bentuk sederhana yang selalu relevan dari waktu ke waktu.</p></div><div class="feature"><i class="fa-solid fa-ruler-combined"></i><h3>Furnitur Kustom</h3><p>Made to fit your room, needs, and personal style.</p></div><div class="feature"><i class="fa-solid fa-heart"></i><h3>Layanan Tepercaya</h3><p>Layanan bantuan mulai dari pemilihan hingga pengiriman.</p></div></div></div></section>
+      <section class="newsletter" id="contact"><span class="eyebrow">DAPATKAN INSPIRASI</span><h2>Hadirkan kenyamanan lebih melalui email Anda.</h2><p>Dapatkan informasi koleksi terbaru dan inspirasi hunian.</p><form class="newsletter-form" onsubmit="event.preventDefault();toast('Terima kasih sudah berlangganan!')"><input type="email" required placeholder="Alamat email Anda"><button class="btn">Berlangganan</button></form></section>
+    </section>
+
+    <!-- SHOP -->
+    <section class="view" id="view-shop"><div class="page-top"><div class="container page-heading"><div class="breadcrumb">HOME / SHOP</div><span class="eyebrow">THE FURNIQUE COLLECTION</span><h1>Our Collection</h1><p>Find the pieces that make your space feel truly yours.</p></div></div>
+      <div class="container shop-layout"><aside class="filters"><div class="filter-row">
+        <div class="filter-group"><h4>Kategori</h4><div id="categoryFilters"></div></div>
+        <div class="filter-group"><h4>Ketersediaan</h4><label><input type="checkbox" id="inStokOnly" onchange="renderShop()"> Hanya produk yang tersedia</label></div>
+        <div class="filter-group"><h4>Rentang harga</h4><input type="range" id="priceRange" min="500000" max="20000000" step="250000" value="20000000" oninput="document.getElementById('priceValue').textContent=money(this.value);renderShop()"><small id="priceValue">Rp20.000.000</small></div>
+      </div><button class="text-link" onclick="resetFilters()">Atur ulang filter</button></aside>
+      <div><div class="shop-toolbar"><div class="search-box"><i class="fa-solid fa-magnifying-glass" style="align-self:center;color:#8d857a"></i><input id="shopSearch" placeholder="Cari furnitur..." oninput="renderShop()"></div><select class="select" id="sortSelect" onchange="renderShop()"><option value="featured">Urutkan: Unggulan</option><option value="low">Harga: Terendah ke Tertinggi</option><option value="high">Harga: Tertinggi ke Terendah</option><option value="new">Terbaru</option></select><span id="productCount" style="font-size:10px;color:var(--muted)"></span></div><div class="product-grid" id="shopGrid"></div><div class="pagination" id="pagination"></div></div></div>
+    </section>
+
+    <!-- DETAIL -->
+    <section class="view" id="view-detail"><div class="container"><div class="detail-layout"><div><div class="detail-main-img"><img id="detailImage" src="" alt="Produk"></div><div class="detail-thumbs" id="detailThumbs"></div></div><div class="detail-info"><div class="breadcrumb">BERANDA / KATALOG / PRODUK</div><span class="eyebrow" id="detailKategori"></span><h1 id="detailName"></h1><div class="detail-price" id="detailHarga"></div><p id="detailDescription"></p><div class="spec-list" id="detailSpecs"></div><p id="detailStok" style="font-size:11px"></p><div class="qty"><button onclick="changeDetailQty(-1)">−</button><span id="detailQty">1</span><button onclick="changeDetailQty(1)">+</button></div><div class="detail-buttons"><button class="btn" onclick="addDetailToCart()">Tambah ke Keranjang</button><button class="btn btn-light" onclick="buyDetailNow()">Beli Sekarang</button></div><p style="font-size:10px;color:var(--muted)"><i class="fa-solid fa-truck"></i> Pengiriman akan dikonfirmasi saat checkout.</p></div></div><div class="section-head"><h2>Anda mungkin juga menyukai</h2></div><div class="product-grid" id="relatedGrid" style="padding-bottom:65px"></div></div></section>
+
+    <!-- CART -->
+    <section class="view" id="view-cart"><div class="page-top"><div class="container page-heading"><div class="breadcrumb">HOME / KERANJANG ANDA</div><span class="eyebrow">PILIHAN ANDA</span><h1>Keranjang Belanja</h1><p>Periksa pilihan Anda sebelum melanjutkan pembelian.</p></div></div><div class="container cart-layout"><div id="cartItems"></div><aside class="summary-card" id="cartSummary"></aside></div></section>
+
+    <!-- CHECKOUT -->
+    <section class="view" id="view-checkout"><div class="page-top"><div class="container page-heading"><span class="eyebrow">SEDIKIT LAGI</span><h1>Penyelesaian Pesanan</h1><p>Lengkapi informasi pengiriman dan pembayaran Anda.</p></div></div><div class="container checkout-layout"><form class="form-card" id="checkoutForm"><h3>Informasi Pengiriman</h3><div class="form-grid"><div class="field"><label>Nama Lengkap</label><input name="name" required placeholder="Nama lengkap"></div><div class="field"><label>Nomor Telepon</label><input name="phone" required placeholder="08xxxxxxxxxx"></div><div class="field full"><label>Email</label><input name="email" type="email" required placeholder="email@example.com"></div><div class="field full"><label>Alamat Pengiriman</label><textarea name="address" required placeholder="Alamat lengkap, kecamatan, kota"></textarea></div><div class="field full"><label>Ongkos Kirim method</label><select name="shipping"><option value="regular">Pengiriman Reguler — Rp50.000</option><option value="express">Pengiriman Ekspres — Rp100.000</option></select></div></div><h3 style="margin-top:22px">Metode Pembayaran</h3><label class="radio-card"><input type="radio" name="payment" value="Transfer Bank" checked> <i class="fa-solid fa-building-columns"></i> Transfer Bank</label><label class="radio-card"><input type="radio" name="payment" value="E-Wallet"> <i class="fa-solid fa-wallet"></i> E-Wallet</label><label class="radio-card"><input type="radio" name="payment" value="QRIS"> <i class="fa-solid fa-qrcode"></i> QRIS</label><label class="radio-card"><input type="radio" name="payment" value="COD"> <i class="fa-solid fa-truck"></i> Bayar di Tempat (COD)</label><button class="btn" type="submit" style="width:100%;margin-top:15px">Buat Pesanan <i class="fa-solid fa-arrow-right"></i></button><p style="font-size:10px;color:var(--muted)">Dengan membuat pesanan, Anda menyetujui proses pemesanan FURNIQUE.</p></form><aside class="summary-card" id="checkoutSummary"></aside></div></section>
+
+    <!-- CUSTOM -->
+    <section class="view" id="view-custom"><div class="page-top"><div class="container page-heading"><span class="eyebrow">DIBUAT KHUSUS UNTUK ANDA</span><h1>Furnitur Kustom</h1><p>Ceritakan ide Anda. Kami akan membantu mewujudkannya menjadi furnitur impian.</p></div></div><div class="container" style="padding:40px 0 75px"><div class="custom-banner" style="margin-bottom:35px"><img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1000&q=85" alt="Custom furniture"><div class="custom-copy"><span class="eyebrow">RUANG ANDA, CERITA ANDA</span><h2>Dirancang sesuai kebutuhan Anda.</h2><p>Ceritakan furnitur yang Anda inginkan. Tim kami akan meninjau permintaan dan menyiapkan perkiraan harga serta waktu produksi.</p></div></div><form class="form-card" id="customForm"><h3>Ceritakan furnitur impian Anda</h3><div class="form-grid"><div class="field"><label>Jenis Furnitur</label><select name="furniture_type" required><option value="">Pilih jenis furnitur</option><option>Sofa</option><option>Meja Makan</option><option>Lemari Pakaian</option><option>Rangka Tempat Tidur</option><option>Cabinet</option><option>Desk</option><option>Other</option></select></div><div class="field"><label>Bahan</label><select name="material" required><option value="">Pilih bahan</option><option>Kayu Ek Solid</option><option>Kayu Jati</option><option>Kayu Mahoni</option><option>Plywood / Multipleks</option><option>Lainnya / Diskusikan</option></select></div><div class="field"><label>Panjang (cm)</label><input type="number" min="1" name="length" required></div><div class="field"><label>Lebar (cm)</label><input type="number" min="1" name="width" required></div><div class="field"><label>Tinggi (cm)</label><input type="number" min="1" name="height" required></div><div class="field"><label>Jumlah</label><input type="number" min="1" value="1" name="quantity" required></div><div class="field"><label>Warna / Finishing</label><input name="finishing" placeholder="Ek natural, walnut, matte..."></div><div class="field"><label>Gambar Referensi</label><input type="file" name="reference_image" accept="image/*"></div><div class="field full"><label>Deskripsi Desain</label><textarea name="description" required placeholder="Ceritakan desain, fungsi, atau detail khusus yang diinginkan..."></textarea></div><div class="field full"><label>Alamat Pengiriman</label><textarea name="address" required placeholder="Alamat lengkap"></textarea></div></div><button class="btn" type="submit">Kirim Permintaan Kustom <i class="fa-solid fa-arrow-right"></i></button></form></div></section>
+
+    <!-- CUSTOMER ACCOUNT -->
+    <section class="view" id="view-account"><div class="dashboard-shell"><aside class="sidebar" id="customerSidebar"><a class="brand" href="#" onclick="showView('home');return false"><svg class="brand-mark" viewBox="0 0 44 44"><path d="M7 5h29v7H14v8h18v7H14v12H7V5Z" fill="#C49A70"/><path d="M19 20h18v19H19V20Z" stroke="#F6F3EC" stroke-width="2"/></svg><span class="brand-name">FURNIQUE</span></a><div class="side-label">Menu Pelanggan</div><nav class="side-nav"><button class="active" onclick="customerTab('overview',this)"><i class="fa-solid fa-house"></i> Ringkasan</button><button onclick="customerTab('profile',this)"><i class="fa-regular fa-user"></i> Profil Saya</button><button onclick="customerTab('orders',this)"><i class="fa-solid fa-box"></i> Pesanan Saya</button><button onclick="customerTab('payments',this)"><i class="fa-regular fa-credit-card"></i> Riwayat Pembayaran</button><button onclick="customerTab('custom',this)"><i class="fa-solid fa-ruler-combined"></i> Pesanan Kustom</button><button onclick="customerTab('wishlist',this)"><i class="fa-regular fa-heart"></i> Daftar Favorit</button><button onclick="logout()"><i class="fa-solid fa-arrow-right-from-bracket"></i> Keluar</button></nav></aside><div class="dash-main" id="customerContent"></div></div></section>
+
+    <!-- ADMIN -->
+    <section class="view" id="view-admin"><div class="dashboard-shell"><aside class="sidebar" id="adminSidebar"><a class="brand" href="#" onclick="showView('home');return false"><svg class="brand-mark" viewBox="0 0 44 44"><path d="M7 5h29v7H14v8h18v7H14v12H7V5Z" fill="#C49A70"/><path d="M19 20h18v19H19V20Z" stroke="#F6F3EC" stroke-width="2"/></svg><span class="brand-name">FURNIQUE</span></a><div class="side-label">Pengelolaan</div><nav class="side-nav"><button class="active" onclick="adminTab('overview',this)"><i class="fa-solid fa-chart-pie"></i> Dasbor</button><button onclick="adminTab('produk',this)"><i class="fa-solid fa-couch"></i> Produk</button><button onclick="adminTab('customers',this)"><i class="fa-solid fa-users"></i> Pelanggan</button><button onclick="adminTab('orders',this)"><i class="fa-solid fa-box"></i> Pesanan</button><button onclick="adminTab('payments',this)"><i class="fa-regular fa-credit-card"></i> Pembayaran</button><button onclick="adminTab('custom',this)"><i class="fa-solid fa-ruler-combined"></i> Pesanan Kustom</button><button onclick="adminTab('shipping',this)"><i class="fa-solid fa-truck"></i> Produksi & Pengiriman</button><button onclick="adminTab('reports',this)"><i class="fa-solid fa-chart-line"></i> Laporan Penjualan</button><button onclick="logout()"><i class="fa-solid fa-arrow-right-from-bracket"></i> Keluar</button></nav></aside><div class="dash-main" id="adminContent"></div></div></section>
+
+    <!-- OWNER -->
+    <section class="view" id="view-owner"><div class="dashboard-shell"><aside class="sidebar"><a class="brand" href="#" onclick="showView('home');return false"><svg class="brand-mark" viewBox="0 0 44 44"><path d="M7 5h29v7H14v8h18v7H14v12H7V5Z" fill="#C49A70"/><path d="M19 20h18v19H19V20Z" stroke="#F6F3EC" stroke-width="2"/></svg><span class="brand-name">FURNIQUE</span></a><div class="side-label">Ruang Kerja Pemilik</div><nav class="side-nav"><button class="active" onclick="ownerTab('overview',this)"><i class="fa-solid fa-chart-pie"></i> Ringkasan</button><button onclick="ownerTab('sales',this)"><i class="fa-solid fa-chart-column"></i> Laporan Penjualan</button><button onclick="ownerTab('transactions',this)"><i class="fa-solid fa-receipt"></i> Transaksi</button><button onclick="logout()"><i class="fa-solid fa-arrow-right-from-bracket"></i> Keluar</button></nav></aside><div class="dash-main" id="ownerContent"></div></div></section>
+  </main>
+
+  <footer class="footer" id="siteFooter"><div class="container"><div class="footer-grid"><div><a href="#" class="brand" onclick="showView('home');return false"><svg class="brand-mark" viewBox="0 0 44 44"><path d="M7 5h29v7H14v8h18v7H14v12H7V5Z" fill="#C49A70"/><path d="M19 20h18v19H19V20Z" stroke="#F6F3EC" stroke-width="2"/></svg><span><span class="brand-name">FURNIQUE</span><span class="brand-tag">CRAFTED FOR LIVING</span></span></a><p style="max-width:260px;margin-top:18px">Furnitur pilihan untuk ruang yang terasa seperti rumah. Dibuat untuk kehidupan, dirancang untuk Anda.</p><p><i class="fa-brands fa-instagram"></i> &nbsp; <i class="fa-brands fa-facebook-f"></i> &nbsp; <i class="fa-brands fa-pinterest-p"></i></p></div><div><h4>JELAJAHI</h4><div class="footer-links"><a href="#" onclick="showView('shop');return false">Lihat Semua Produk</a><a href="#" onclick="showView('home');return false">Produk Terlaris</a><a href="#" onclick="showView('custom');return false">Furnitur Kustom</a><a href="#about">Tentang Kami</a></div></div><div><h4>BANTUAN</h4><div class="footer-links"><a href="#" onclick="toast('Hubungi tim FURNIQUE untuk bantuan.');return false">Hubungi Kami</a><a href="#" onclick="toast('Informasi pengiriman tersedia saat checkout.');return false">Informasi Pengiriman</a><a href="#" onclick="toast('Silakan login untuk melihat pesanan.');return false">Lacak Pesanan</a><a href="#" onclick="toast('Kebijakan akan ditambahkan oleh pengelola.');return false">Syarat & Ketentuan</a></div></div><div><h4>HUBUNGI KAMI</h4><p><i class="fa-regular fa-envelope"></i> hello@furnique.id</p><p><i class="fa-solid fa-phone"></i> +62 812 0000 0000</p><p><i class="fa-solid fa-location-dot"></i> Indonesia</p></div></div><div class="footer-bottom"><span>© <span id="year"></span> FURNIQUE. Hak cipta dilindungi.</span><span>DIBUAT DENGAN TELITI · DIRANCANG UNTUK TAHAN LAMA</span></div></div></footer>
+
+  <div id="toast" class="toast hidden" role="status"></div>
+  <div id="modalRoot"></div>
+
+<script>
+/* =========================================================
+   FURNIQUE FRONTEND
+   API_BASE dapat disesuaikan dengan alamat server Express.
+   Contoh: window.FURNIQUE_API_BASE = 'http://localhost:3000/api'
+   ========================================================= */
+const API_BASE = window.FURNIQUE_API_BASE || '/api';
+const money = n => new Intl.NumberFormat('id-ID',{style:'currency',currency:'IDR',maximumFractionDigits:0}).format(Number(n)||0);
+const img = (id,w=800) => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=82`;
+const categories = [
+ {name:'Ruang Keluarga',image:img('photo-1600210492486-724fe5c67fb0')},
+ {name:'Kamar Tidur',image:img('photo-1616486338812-3dadae4b4ace')},
+ {name:'Ruang Makan',image:img('photo-1600607687939-ce8a6c25118c')},
+ {name:'Furnitur Kantor',image:img('photo-1497366754035-f200968a6e72')},
+ {name:'Penyimpanan',image:img('photo-1595428774223-ef52624120d2')},
+ {name:'Dekorasi',image:img('photo-1600210491369-e753d80a41f3')}
+];
+const demoProduks = [
+ {id:1,name:'Bufet Kayu Ek Lena',category:'Penyimpanan',price:4800000,old_price:5200000,stock:8,material:'Kayu Ek Solid',dimensions:'160 × 45 × 75 cm',description:'Kredensa kayu ek bernuansa hangat dengan ruang penyimpanan luas dan detail yang dirancang dengan cermat.',image:img('photo-1555041469-a586c61ea9bc'),tag:'TERLARIS'},
+ {id:2,name:'Kursi Santai Arden',category:'Ruang Keluarga',price:3500000,stock:12,material:'Kayu Ek & Linen',dimensions:'78 × 82 × 76 cm',description:'Kursi santai dengan rangka kayu solid dan pelapis lembut berwarna netral.',image:img('photo-1567538096630-e0c55bd6374c'),tag:'POPULER'},
+ {id:3,name:'Meja Makan Bundar Mori',category:'Ruang Makan',price:5900000,old_price:6500000,stock:5,material:'Kayu Jati Solid',dimensions:'Ø 120 × 75 cm',description:'Meja bundar berdesain artistik yang menghadirkan kehangatan saat berkumpul.',image:img('photo-1617806118233-18e1de247200'),tag:'DISKON'},
+ {id:4,name:'Bufet TV Nara',category:'Penyimpanan',price:4090000,stock:6,material:'Veneer Kayu Ek',dimensions:'150 × 42 × 65 cm',description:'Bufet fungsional dengan bentuk sederhana dan tekstur kayu yang lembut.',image:img('photo-1600585154340-be6161a56a0c'),tag:''},
+ {id:5,name:'Kursi Makan Ayla',category:'Ruang Makan',price:1290000,stock:18,material:'Kayu Ash Solid & Kain',dimensions:'48 × 52 × 78 cm',description:'Kursi makan dengan rangka kayu melengkung dan dudukan yang nyaman.',image:img('photo-1503602642458-232111445657'),tag:'BARU'},
+ {id:6,name:'Meja Kopi Sora',category:'Ruang Keluarga',price:2700000,old_price:3100000,stock:9,material:'Kayu Ek Solid',dimensions:'Ø 90 × 42 cm',description:'Meja kopi rendah dengan sudut membulat dan tampilan alami yang tak lekang waktu.',image:img('photo-1499933374294-4584851497cc'),tag:'DISKON'},
+ {id:7,name:'Meja TV Forma',category:'Ruang Keluarga',price:3200000,stock:4,material:'Veneer Kayu Ek',dimensions:'180 × 40 × 48 cm',description:'Meja konsol bergaris sederhana untuk menjaga ruang keluarga tetap rapi.',image:img('photo-1595428774223-ef52624120d2'),tag:''},
+ {id:8,name:'Rangka Tempat Tidur Haven',category:'Kamar Tidur',price:6500000,stock:3,material:'Kayu Jati Solid',dimensions:'Queen 160 × 200 cm',description:'Rangka tempat tidur kokoh dengan tampilan hangat dan sederhana.',image:img('photo-1505693416388-ac5ce068fe85'),tag:'TERLARIS'},
+ {id:9,name:'Meja Kerja Oakline',category:'Furnitur Kantor',price:2850000,stock:10,material:'Kayu Ek & Logam',dimensions:'120 × 60 × 75 cm',description:'Meja kerja fungsional yang dirancang untuk aktivitas yang nyaman dan fokus.',image:img('photo-1497366811353-6870744d04b2'),tag:'BARU'},
+ {id:10,name:'Lemari Pajangan Mira',category:'Penyimpanan',price:5200000,stock:2,material:'Kayu Ek & Kaca',dimensions:'90 × 40 × 180 cm',description:'Pajang koleksi favorit Anda dalam lemari elegan dengan detail kaca.',image:img('photo-1600607687920-4e2a09cf159d'),tag:''},
+ {id:11,name:'Meja Samping Tempat Tidur Solana',category:'Kamar Tidur',price:1450000,stock:15,material:'Kayu Ek Solid',dimensions:'48 × 40 × 52 cm',description:'Meja samping tempat tidur berukuran ringkas dengan satu laci fungsional.',image:img('photo-1616486029423-aaa4789e8c9a'),tag:'BARU'},
+ {id:12,name:'Bangku Aksen Luma',category:'Dekorasi',price:890000,stock:20,material:'Kayu Jati Solid',dimensions:'35 × 35 × 45 cm',description:'Bangku aksen serbaguna yang memberikan sentuhan alami pada berbagai ruangan.',image:img('photo-1538688423619-a81d3f23454b'),tag:''}
+];
+let produk = [...demoProduks], cart = JSON.parse(localStorage.getItem('furnique_cart')||'[]');
+let currentUser = null, selectedProduk = null, detailQty = 1, currentPage=1, activeKategori='Semua', maxHarga=20000000;
+let orders = [], payments = [], customPesanan = [], customers = [];
+let activeCustomerTab = 'overview';
+const $ = id => document.getElementById(id);
+const escapeHTML = s => String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+async function api(path,options={}) {
+  const res = await fetch(API_BASE+path,{credentials:'include',...options,headers:{...(options.body instanceof FormData?{}:{'Content-Type':'application/json'}),...(options.headers||{})}});
+  const data = await res.json().catch(()=>({message:'Respons server tidak valid'}));
+  if(!res.ok) throw new Error(data.message||data.error||`Request gagal (${res.status})`);
+  return data;
+}
+function toast(message,error=false){const el=$('toast');el.textContent=message;el.className='toast'+(error?' error':'');clearTimeout(window.toastTimer);window.toastTimer=setTimeout(()=>el.classList.add('hidden'),3200)}
+function showView(name){
+  document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+  const target=$('view-'+name);if(!target){toast('Halaman tidak ditemukan.',true);return}
+  target.classList.add('active');$('navLinks').classList.remove('open');
+  $('siteFooter').style.display=['admin','owner','account'].includes(name)?'none':'block';
+  window.scrollTo({top:0,behavior:'smooth'});
+  if(name==='shop')renderShop();if(name==='cart')renderCart();if(name==='checkout')renderCheckoutSummary();
+  if(name==='account')renderCustomer('overview');if(name==='admin')renderAdmin('overview');if(name==='owner')renderOwner('overview');
+}
+function logoMark(){return `<svg class="brand-mark" viewBox="0 0 44 44"><path d="M7 5h29v7H14v8h18v7H14v12H7V5Z" fill="#C49A70"/><path d="M19 20h18v19H19V20Z" stroke="#F6F3EC" stroke-width="2"/></svg>`}
+function productCard(p){return `<article class="product-card"><div class="product-image" onclick="openProduk(${Number(p.id)})"><img src="${escapeHTML(p.image||p.image_url||'')}" alt="${escapeHTML(p.name)}" loading="lazy" onerror="this.src='https://placehold.co/600x600/f1ece4/6b5846?text=FURNIQUE'">${p.tag?`<span class="product-tag">${escapeHTML(p.tag)}</span>`:''}<button class="wish" aria-label="Daftar Favorit" onclick="event.stopPropagation();toggleWish(${Number(p.id)},this)"><i class="fa-regular fa-heart"></i></button></div><div class="product-info"><div class="product-category">${escapeHTML(p.category||'Furnitur')}</div><div class="product-title">${escapeHTML(p.name)}</div><div class="price">${money(p.price)} ${p.old_price?`<span class="old-price">${money(p.old_price)}</span>`:''}</div><div class="product-actions"><button class="btn btn-small" onclick="addToCart(${Number(p.id)})">Tambah ke Keranjang</button><button class="btn btn-small btn-light" onclick="openProduk(${Number(p.id)})" aria-label="Detail"><i class="fa-regular fa-eye"></i></button></div></div></article>`}
+function renderHome(){
+  $('homeKategori').innerHTML=categories.map(c=>`<div class="category-card" onclick="activeKategori='${c.name}';showView('shop')"><img src="${c.image}" alt="${c.name}" loading="lazy"><span>${c.name}</span></div>`).join('');
+  $('bestSellerGrid').innerHTML=produk.slice(0,4).map(productCard).join('');
+  $('newArrivalGrid').innerHTML=produk.slice(-4).reverse().map(productCard).join('');
+  const spaces=[['Ruang Keluarga',categories[0].image],['Kamar Tidur',categories[1].image],['Ruang Makan',categories[2].image]];
+  $('spaceGrid').innerHTML=spaces.map(s=>`<div class="space-card"><img src="${s[1]}" alt="${s[0]}" loading="lazy"><div class="space-copy"><h3>${s[0]}</h3><a href="#" onclick="activeKategori='${s[0]}';showView('shop');return false">Jelajahi koleksi</a></div></div>`).join('');
+}
+function renderKategoriFilters(){ $('categoryFilters').innerHTML=['Semua',...categories.map(c=>c.name)].map(c=>`<label><input type="radio" name="category" ${activeKategori===(c==='Semua'?'Semua':c)?'checked':''} onchange="activeKategori='${c==='Semua'?'Semua':c}';currentPage=1;renderShop()"> ${c}</label>`).join('') }
+function renderShop(){
+  if(!$('shopGrid'))return;
+  renderKategoriFilters();
+  maxHarga=Number($('priceRange')?.value||20000000);
+  const q=($('shopSearch')?.value||'').toLowerCase(),onlyStok=$('inStokOnly')?.checked,sort=$('sortSelect')?.value||'featured';
+  let list=produk.filter(p=>(activeKategori==='Semua'||p.category===activeKategori)&&p.name.toLowerCase().includes(q)&&Number(p.price)<=maxHarga&&(!onlyStok||Number(p.stock)>0));
+  if(sort==='low')list.sort((a,b)=>a.price-b.price);if(sort==='high')list.sort((a,b)=>b.price-a.price);if(sort==='new')list.sort((a,b)=>b.id-a.id);
+  $('productCount').textContent=`${list.length} produk`;
+  const per=8,total=Math.max(1,Math.ceil(list.length/per));currentPage=Math.min(currentPage,total);
+  const pageItems=list.slice((currentPage-1)*per,currentPage*per);
+  $('shopGrid').innerHTML=pageItems.length?pageItems.map(productCard).join(''):`<div class="empty-state"><i class="fa-solid fa-couch"></i><h3>Furnitur tidak ditemukan</h3><p>Coba ubah kata kunci atau filter pencarian.</p></div>`;
+  $('pagination').innerHTML=Array.from({length:total},(_,i)=>`<button class="${currentPage===i+1?'active':''}" onclick="currentPage=${i+1};renderShop()">${i+1}</button>`).join('');
+  maxHarga=Number($('priceRange')?.value||20000000);$('priceValue').textContent=money(maxHarga);
+}
+function resetFilters(){activeKategori='Semua';$('shopSearch').value='';$('inStokOnly').checked=false;$('priceRange').value=20000000;$('sortSelect').value='featured';maxHarga=20000000;currentPage=1;renderShop()}
+function openProduk(id){selectedProduk=produk.find(p=>Number(p.id)===Number(id));if(!selectedProduk)return toast('Produk tidak ditemukan.',true);detailQty=1;$('detailQty').textContent=1;$('detailImage').src=selectedProduk.image||selectedProduk.image_url;$('detailName').textContent=selectedProduk.name;$('detailKategori').textContent=selectedProduk.category||'Furnitur';$('detailHarga').textContent=money(selectedProduk.price);$('detailDescription').textContent=selectedProduk.description||'Furnitur pilihan FURNIQUE dengan desain yang fungsional dan timeless.';$('detailStok').textContent=Number(selectedProduk.stock)>0?`Tersedia · ${selectedProduk.stock} unit`:'Stok sedang habis';$('detailSpecs').innerHTML=`<div class="spec-row"><span>Bahan</span><strong>${escapeHTML(selectedProduk.material||'-')}</strong></div><div class="spec-row"><span>Ukuran</span><strong>${escapeHTML(selectedProduk.dimensions||'-')}</strong></div><div class="spec-row"><span>Kategori</span><strong>${escapeHTML(selectedProduk.category||'-')}</strong></div>`;$('detailThumbs').innerHTML=`<img src="${selectedProduk.image||selectedProduk.image_url}" onclick="$('detailImage').src=this.src" alt="Produk view">`;$('relatedGrid').innerHTML=produk.filter(p=>p.category===selectedProduk.category&&p.id!==selectedProduk.id).slice(0,4).map(productCard).join('');showView('detail')}
+function changeDetailQty(n){detailQty=Math.max(1,Math.min(Number(selectedProduk?.stock)||1,detailQty+n));$('detailQty').textContent=detailQty}
+function addDetailToCart(){if(selectedProduk)addToCart(selectedProduk.id,detailQty)}
+function buyDetailNow(){if(selectedProduk){addToCart(selectedProduk.id,detailQty);showView('checkout')}}
+function saveCart(){localStorage.setItem('furnique_cart',JSON.stringify(cart));$('cartCount').textContent=cart.reduce((s,x)=>s+x.qty,0)}
+function addToCart(id,qty=1){const p=produk.find(x=>Number(x.id)===Number(id));if(!p)return;if(Number(p.stock)<=0)return toast('Stok produk sedang habis.',true);const found=cart.find(x=>Number(x.id)===Number(id));if(found)found.qty=Math.min(Number(p.stock),found.qty+qty);else cart.push({id:p.id,qty:Math.min(Number(p.stock),qty)});saveCart();toast(`${p.name} ditambahkan ke keranjang.`)}
+function cartDetail(){return cart.map(c=>{const p=produk.find(x=>Number(x.id)===Number(c.id));return p?{...p,qty:c.qty}:null}).filter(Boolean)}
+function changeCartQty(id,n){const c=cart.find(x=>Number(x.id)===Number(id));const p=produk.find(x=>Number(x.id)===Number(id));if(!c||!p)return;c.qty=Math.max(1,Math.min(Number(p.stock)||1,c.qty+n));saveCart();renderCart()}
+function removeCart(id){cart=cart.filter(x=>Number(x.id)!==Number(id));saveCart();renderCart()}
+function totals(shipping=0){const subtotal=cartDetail().reduce((s,p)=>s+p.price*p.qty,0);return{subtotal,shipping,total:subtotal+shipping}}
+function renderCart(){
+ const items=cartDetail(),box=$('cartItems');if(!items.length){box.innerHTML=`<div class="empty-state"><i class="fa-solid fa-bag-shopping"></i><h3>Keranjang Anda masih kosong</h3><p>Belum ada produk di keranjang.</p><button class="btn" onclick="showView('shop')">Jelajahi Koleksi</button></div>`;$('cartSummary').innerHTML='<h3>Ringkasan Pesanan</h3><p style="color:var(--muted);font-size:12px">Tambahkan produk untuk melihat ringkasan.</p>';return}
+ box.innerHTML=items.map(p=>`<div class="cart-row"><img src="${p.image||p.image_url}" alt="${escapeHTML(p.name)}"><div><h4>${escapeHTML(p.name)}</h4><p>${money(p.price)}</p><div class="qty"><button onclick="changeCartQty(${p.id},-1)">−</button><span>${p.qty}</span><button onclick="changeCartQty(${p.id},1)">+</button></div><button class="remove" onclick="removeCart(${p.id})"><i class="fa-regular fa-trash-can"></i> Hapus</button></div><strong>${money(p.price*p.qty)}</strong></div>`).join('');
+ const t=totals();$('cartSummary').innerHTML=`<h3>Ringkasan Pesanan</h3><div class="summary-line"><span>Subtotal</span><strong>${money(t.subtotal)}</strong></div><div class="summary-line"><span>Ongkos Kirim</span><span>Dihitung saat pembayaran</span></div><div class="summary-line summary-total"><span>Total</span><strong>${money(t.total)}</strong></div><button class="btn" onclick="showView('checkout')">Lanjut ke Pembayaran <i class="fa-solid fa-arrow-right"></i></button><p style="font-size:10px;color:var(--muted);text-align:center">Biaya pengiriman dihitung berdasarkan metode pengiriman.</p>`;
+}
+function renderCheckoutSummary(){const t=totals(50000);$('checkoutSummary').innerHTML=`<h3>Pesanan Anda</h3>${cartDetail().map(p=>`<div class="summary-line"><span>${escapeHTML(p.name)} × ${p.qty}</span><strong>${money(p.price*p.qty)}</strong></div>`).join('')}<div class="summary-line"><span>Subtotal</span><strong>${money(t.subtotal)}</strong></div><div class="summary-line"><span>Estimasi Ongkos Kirim</span><strong>${money(t.shipping)}</strong></div><div class="summary-line summary-total"><span>Total</span><strong>${money(t.total)}</strong></div>`}
+$('checkoutForm').addEventListener('submit',async e=>{
+ e.preventDefault();
+ if(!currentUser)return authView('login');
+ if(!cart.length)return toast('Keranjang masih kosong.',true);
+ const fd=new FormData(e.target),shipping=fd.get('shipping')==='express'?100000:50000,t=totals(shipping);
+ const payload={items:cartDetail().map(p=>({product_id:Number(p.id),jumlah:Number(p.qty)})),metode_pengiriman:fd.get('shipping'),biaya_pengiriman:shipping,alamat_pengiriman:fd.get('address')};
+ try{
+  const result=await api('/orders',{method:'POST',body:JSON.stringify(payload)});
+  const order={id:result.order_id,total_harga:result.total_harga,status_pesanan:'Menunggu Konfirmasi',created_at:new Date().toISOString(),metode_pembayaran:fd.get('payment')};
+  orders.unshift(order);cart=[];saveCart();await loadCustomerData();toast('Pesanan berhasil dibuat.');showOrderSuccess(order);
+ }catch(err){toast(err.message,true)}
+});
+function showOrderSuccess(o){$('modalRoot').innerHTML=`<div class="modal-backdrop"><div class="modal"><button class="modal-close" onclick="$('modalRoot').innerHTML=''">×</button><div style="text-align:center;padding:20px"><i class="fa-regular fa-circle-check" style="font-size:42px;color:var(--green)"></i><h2 style="font:600 24px var(--display)">Terima kasih atas pesanan Anda!</h2><p style="color:var(--muted)">Nomor pesanan: <strong>${escapeHTML(o.id||o.order_id||'-')}</strong></p><p style="font-size:12px">Status: Menunggu Konfirmasi</p><button class="btn" onclick="$('modalRoot').innerHTML='';showView('account')">Lihat Pesanan Saya</button></div></div></div>`}
+$('customForm').addEventListener('submit',async e=>{
+ e.preventDefault();
+ if(!currentUser)return authView('login');
+ const fd=new FormData(e.target);
+ const payload=new FormData();
+ payload.append('jenis_furnitur',fd.get('furniture_type'));
+ payload.append('panjang',fd.get('length'));payload.append('lebar',fd.get('width'));payload.append('tinggi',fd.get('height'));
+ payload.append('bahan_kayu',fd.get('material'));payload.append('finishing',fd.get('finishing')||'-');
+ payload.append('deskripsi_desain',fd.get('description'));payload.append('jumlah',fd.get('quantity'));payload.append('alamat_pengiriman',fd.get('address'));
+ const file=fd.get('reference_image');if(file&&file.size)payload.append('gambar_referensi',file);
+ try{await api('/custom-orders',{method:'POST',body:payload});await loadCustomerData();toast('Permintaan custom order berhasil dikirim.');e.target.reset()}
+ catch(err){toast(err.message,true)}
+});
+function toggleWish(id,btn){btn.classList.toggle('active');btn.innerHTML=btn.classList.contains('active')?'<i class="fa-solid fa-heart"></i>':'<i class="fa-regular fa-heart"></i>';let list=JSON.parse(localStorage.getItem('furnique_wishlist')||'[]');if(list.includes(id))list=list.filter(x=>x!==id);else list.push(id);localStorage.setItem('furnique_wishlist',JSON.stringify(list));toast('Daftar Favorit diperbarui.')}
+function handleProfileClick(){if(!currentUser){showView('login');return}showRoleHome()}
+function showRoleHome(){if(currentUser.role==='admin')showView('admin');else if(currentUser.role==='owner')showView('owner');else showView('account')}
+function authView(mode='login'){$('modalRoot').innerHTML='';document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));let old=$('view-auth');if(old)old.remove();const section=document.createElement('section');section.id='view-auth';section.className='view active';section.innerHTML=`<div class="auth-wrap"><div class="auth-card"><div class="auth-image"><a class="brand" href="#" onclick="showView('home');return false">${logoMark()}<span class="brand-name">FURNIQUE</span></a></div><div class="auth-form"><a class="brand" href="#" onclick="showView('home');return false">${logoMark()}<span class="brand-name">FURNIQUE</span></a><h2>${mode==='login'?'Selamat datang Kembali':'Buat Akun'}</h2><p class="sub">${mode==='login'?'Masuk untuk melanjutkan pengalaman berbelanja furnitur Anda.':'Bergabunglah dengan FURNIQUE dan wujudkan ruang impian Anda.'}</p><form id="authForm">${mode==='register'?`<div class="field"><label>Nama Lengkap</label><input name="name" required placeholder="Nama lengkap"></div><div class="field"><label>Nomor Telepon</label><input name="phone" required placeholder="08xxxxxxxxxx"></div><div class="field"><label>Alamat</label><input name="address" required placeholder="Alamat"></div>`:''}<div class="field"><label>Alamat Email</label><input type="email" name="email" required placeholder="you@example.com"></div><div class="field"><label>Kata Sandi</label><div style="position:relative"><input type="password" name="password" id="authPassword" required minlength="6" placeholder="Masukkan kata sandi" style="padding-right:45px"><button type="button" class="icon-btn" style="position:absolute;right:4px;top:3px" onclick="togglePassword()"><i class="fa-regular fa-eye"></i></button></div></div>${mode==='register'?`<div class="field"><label>Konfirmasi Kata Sandi</label><input type="password" name="confirm" required minlength="6" placeholder="Ulangi kata sandi"></div>`:`<div style="display:flex;justify-content:space-between;font-size:10px;margin:0 0 12px"><label><input type="checkbox" name="remember"> Ingat Saya</label><button type="button" class="text-link" onclick="toast('Silakan hubungi admin untuk reset password.')">Lupa Kata Sandi?</button></div>`}<div class="auth-error" id="authError"></div><button class="btn" type="submit">${mode==='login'?'MASUK':'BUAT AKUN'}</button></form><div class="auth-switch">${mode==='login'?`Belum punya akun? <button onclick="authView('register')">Buat Akun</button>`:`Sudah punya akun? <button onclick="authView('login')">Masuk</button>`}</div><div class="auth-switch"><button onclick="showView('home')">Kembali ke Beranda</button></div></div></div></div>`;document.querySelector('main').appendChild(section);$('siteFooter').style.display='none';window.scrollTo(0,0);$('authForm').addEventListener('submit',async e=>{e.preventDefault();const fd=new FormData(e.target),email=fd.get('email'),password=fd.get('password');if(mode==='register'&&password!==fd.get('confirm')){$('authError').textContent='Konfirmasi password tidak sama.';return}try{const data=await api(mode==='login'?'/login':'/register',{method:'POST',body:JSON.stringify(mode==='login'?{email,password}:{nama:fd.get('name'),no_hp:fd.get('phone'),alamat:fd.get('address'),email,password})});if(mode==='register'){toast('Registrasi berhasil. Silakan masuk menggunakan akun yang dibuat.');authView('login');return;}currentUser=normalizeUser(data.user||data);finishAuth(currentUser)}catch(err){if(err.message.includes('Failed to fetch')||err.message.includes('NetworkError')){if(mode==='register'){currentUser={name:fd.get('name'),email,phone:fd.get('phone'),address:fd.get('address'),role:'customer',demo:true};finishAuth(currentUser);toast('Mode demo: akun belum disimpan ke database.');return}const demos={'customer@furnique.id':'customer','admin@furnique.id':'admin','owner@furnique.id':'owner'};if(demos[email]&&password==='furnique123'){currentUser={name:email.split('@')[0],email,role:demos[email],demo:true};finishAuth(currentUser);toast('Masuk demo berhasil. Backend belum terhubung.')}else $('authError').textContent='Server belum terhubung. Gunakan akun demo yang tersedia atau jalankan server backend.'}else $('authError').textContent=err.message}})}
+function togglePassword(){const p=$('authPassword');p.type=p.type==='password'?'text':'password'}
+async function finishAuth(user){currentUser=normalizeUser(user);await loadCustomerData();await loadAdminData();showRoleHome();toast(`Selamat datang, ${currentUser.nama||currentUser.name||'FURNIQUE user'}!`)}
+function logout(){currentUser=null;showView('home');toast('Anda berhasil logout.')}
+async function customerTab(tab,btn){document.querySelectorAll('#customerSidebar .side-nav button').forEach(b=>b.classList.remove('active'));if(btn)btn.classList.add('active');try{await loadCustomerData()}catch(e){console.warn(e)}renderCustomer(tab)}
+function renderCustomer(tab){
+ const content=$('customerContent'),name=escapeHTML(currentUser?.name||'Pelanggan'),myPesanan=orders;
+ let body='';
+ if(tab==='overview')body=`<div class="dash-top"><div><h1>Selamat datang kembali, ${name}</h1><p>Berikut informasi terbaru mengenai pesanan Anda.</p></div><button class="btn btn-small" onclick="showView('shop')">Jelajahi Katalog</button></div><div class="stat-grid"><div class="stat-card"><span>Total Pesanan</span><strong>${myPesanan.length}</strong><small>Semua pembelian Anda</small></div><div class="stat-card"><span>Pesanan Aktif</span><strong>${myPesanan.filter(o=>o.status!=='Selesai').length}</strong><small>Sedang diproses</small></div><div class="stat-card"><span>Selesai</span><strong>${myPesanan.filter(o=>o.status==='Selesai').length}</strong><small>Berhasil diselesaikan</small></div><div class="stat-card"><span>Permintaan Kustom</span><strong>${customPesanan.length}</strong><small>Permintaan desain Anda</small></div></div><div class="dash-card"><h3>Pesanan Terbaru</h3>${orderTable(myPesanan)}</div>`;
+ if(tab==='orders')body=`<div class="dash-top"><div><h1>Pesanan Saya</h1><p>Pantau pesanan furnitur Anda.</p></div></div><div class="dash-card">${orderTable(myPesanan)}</div>`;
+ if(tab==='payments')body=`<div class="dash-top"><div><h1>Riwayat Pembayaran</h1><p>Catatan pembayaran Anda.</p></div></div><div class="dash-card"><p style="color:var(--muted);font-size:12px">Riwayat pembayaran akan ditampilkan setelah backend mengembalikan data transaksi.</p></div>`;
+ if(tab==='custom')body=`<div class="dash-top"><div><h1>Pesanan Kustom</h1><p>Pantau permintaan furnitur kustom Anda.</p></div><button class="btn btn-small" onclick="showView('custom')">Permintaan Baru</button></div><div class="dash-card">${customPesanan.length?customPesanan.map(o=>`<p><strong>${escapeHTML(o.furniture_type)}</strong> · ${escapeHTML(o.status)} · ${escapeHTML(o.id)}</p>`).join(''):'<p>Belum ada permintaan kustom.</p>'}</div>`;
+ if(tab==='profile')body=`<div class="dash-top"><div><h1>Profil Saya</h1><p>Informasi akun Anda.</p></div></div><div class="dash-card"><h3>Informasi Pribadi</h3><p><strong>Nama:</strong> ${name}</p><p><strong>Email:</strong> ${escapeHTML(currentUser?.email||'-')}</p><p><strong>Phone:</strong> ${escapeHTML(currentUser?.phone||'-')}</p><p><strong>Alamat:</strong> ${escapeHTML(currentUser?.address||'-')}</p></div>`;
+ if(tab==='wishlist'){const ids=JSON.parse(localStorage.getItem('furnique_wishlist')||'[]');body=`<div class="dash-top"><div><h1>Daftar Favorit</h1><p>Furnitur yang Anda simpan.</p></div></div><div class="product-grid">${produk.filter(p=>ids.includes(p.id)).map(productCard).join('')||'<p>Daftar favorit Anda masih kosong.</p>'}</div>`}
+ content.innerHTML=body;
+}
+function orderTable(list){
+ if(!list||!list.length)return '<div class="empty-state"><i class="fa-solid fa-box-open"></i><h3>Belum ada pesanan</h3><p>Pesanan Anda akan ditampilkan di sini.</p></div>';
+ return `<div class="table-wrap"><table><thead><tr><th>ID Pesanan</th><th>Tanggal</th><th>Total</th><th>Status Pesanan</th><th>Status Pembayaran</th><th>Aksi</th></tr></thead><tbody>${list.map(o=>{
+  const id=Number(o.id||o.order_id);
+  const ps=String(o.payment_status||o.status_pembayaran||'Menunggu Pembayaran').trim();
+  const paid=['Berhasil','Lunas','Sudah Dibayar'].includes(ps);
+  const waiting=['Menunggu Verifikasi','Diproses Admin'].includes(ps);
+  const paymentAction=paid?'<span class="status-pill success">Lunas</span>':waiting?'<span class="status-pill warning">Bukti terkirim</span>':`<button class="btn btn-small" onclick="paymentUpload(${id})"><i class="fa-solid fa-credit-card"></i> Bayar & Upload Bukti</button>`;
+  return `<tr><td>#${escapeHTML(id)}</td><td>${new Date(o.created_at||Date.now()).toLocaleDateString('id-ID')}</td><td>${money(o.total??o.total_harga??0)}</td><td><span class="status-pill warning">${escapeHTML(o.status||o.status_pesanan||'Menunggu Konfirmasi')}</span></td><td>${escapeHTML(ps)}</td><td style="min-width:175px">${paymentAction}<br><button class="btn btn-small btn-light" style="margin-top:5px" onclick="viewOrder('${id}')">Detail Pesanan</button></td></tr>`;
+ }).join('')}</tbody></table></div>`;
+}
+function paymentUpload(orderId){
+ const order=orders.find(o=>String(o.id||o.order_id)===String(orderId));
+ const amount=order?.total??order?.total_harga??0;
+ $('modalRoot').innerHTML=`<div class="modal-backdrop"><div class="modal"><button class="modal-close" type="button" onclick="$('modalRoot').innerHTML=''">×</button><span class="eyebrow">PEMBAYARAN FURNIQUE</span><h2 style="font:600 22px var(--display)">Bayar Pesanan #${escapeHTML(orderId)}</h2><div class="dash-card" style="margin:14px 0;padding:14px"><div style="font-size:12px;color:var(--muted)">Total yang harus dibayar</div><strong style="font-size:24px">${money(amount)}</strong></div><p style="font-size:12px;color:var(--muted)">Lakukan pembayaran sesuai metode yang dipilih melalui kanal pembayaran toko, lalu unggah bukti transfer di bawah ini. Admin akan memeriksa bukti pembayaran Anda.</p><form id="paymentForm"><div class="field"><label>Metode Pembayaran</label><select name="metode_pembayaran" required><option value="Transfer Bank">Transfer Bank</option><option value="E-Wallet">E-Wallet</option><option value="QRIS">QRIS</option></select></div><div class="field"><label>Bukti Pembayaran (JPG, PNG, atau PDF · maksimal 2 MB)</label><input type="file" name="bukti_transfer" accept=".jpg,.jpeg,.png,.pdf,image/jpeg,image/png,application/pdf" required></div><p id="paymentUploadError" style="font-size:12px;color:#b42318"></p><button class="btn" id="sendPaymentProof" type="submit" style="width:100%">Kirim Bukti Pembayaran</button></form></div></div>`;
+ const form=$('paymentForm');
+ form.onsubmit=async e=>{
+  e.preventDefault();
+  const file=form.elements.bukti_transfer.files[0];
+  if(!file){$('paymentUploadError').textContent='Pilih file bukti pembayaran terlebih dahulu.';return}
+  if(file.size>2*1024*1024){$('paymentUploadError').textContent='Ukuran file maksimal 2 MB.';return}
+  const fd=new FormData(form);fd.append('order_id',String(orderId));
+  const btn=$('sendPaymentProof');btn.disabled=true;btn.textContent='Mengirim...';
+  try{
+   await api('/payments',{method:'POST',body:fd});
+   $('modalRoot').innerHTML='';await loadCustomerData();renderCustomer('orders');
+   toast('Bukti pembayaran berhasil dikirim. Menunggu verifikasi admin.');
+  }catch(err){$('paymentUploadError').textContent=err.message;btn.disabled=false;btn.textContent='Kirim Bukti Pembayaran';}
+ };
+}
+function renderCustomer(tab){
+ const content=$('customerContent'),name=escapeHTML(currentUser?.nama||currentUser?.name||'Pelanggan');let body='';
+ if(tab==='overview')body=`<div class="dash-top"><div><h1>Selamat datang kembali, ${name}</h1><p>Berikut informasi terbaru mengenai pesanan Anda.</p></div><button class="btn btn-small" onclick="showView('shop')">Jelajahi Katalog</button></div><div class="stat-grid"><div class="stat-card customer-stat"><div class="customer-stat-copy"><span>Total Pesanan</span><strong>${orders.length}</strong></div><div class="customer-stat-icon"><i class="fa-solid fa-bag-shopping"></i></div></div><div class="stat-card customer-stat"><div class="customer-stat-copy"><span>Pesanan Aktif</span><strong>${orders.filter(o=>o.status!=='Selesai').length}</strong></div><div class="customer-stat-icon"><i class="fa-solid fa-box-open"></i></div></div><div class="stat-card customer-stat"><div class="customer-stat-copy"><span>Selesai</span><strong>${orders.filter(o=>o.status==='Selesai').length}</strong></div><div class="customer-stat-icon"><i class="fa-solid fa-circle-check"></i></div></div><div class="stat-card customer-stat"><div class="customer-stat-copy"><span>Permintaan Kustom</span><strong>${customPesanan.length}</strong></div><div class="customer-stat-icon"><i class="fa-solid fa-ruler-combined"></i></div></div></div><div class="dash-card"><h3>Pesanan Terbaru</h3>${orderTable(orders)}</div>`;
+ if(tab==='orders')body=`<div class="dash-top"><div><h1>Pesanan Saya</h1><p>Pantau pesanan, lakukan pembayaran, dan unggah bukti transfer Anda.</p></div><button class="btn btn-small btn-light" onclick="customerTab('orders')">Muat Ulang</button></div><div class="dash-card">${orderTable(orders)}</div>`;
+ if(tab==='payments'){
+  const paidOrders=orders.filter(o=>['Berhasil','Lunas','Sudah Dibayar'].includes(String(o.payment_status||o.status_pembayaran||'')));
+  body=`<div class="dash-top"><div><h1>Riwayat Pembayaran</h1><p>Hanya pembayaran yang sudah berhasil diverifikasi admin.</p></div></div><div class="dash-card">${paidOrders.length?`<div class="table-wrap"><table><thead><tr><th>ID Pesanan</th><th>Tanggal</th><th>Metode</th><th>Nominal Dibayar</th><th>Status</th><th>Detail</th></tr></thead><tbody>${paidOrders.map(o=>`<tr><td>#${escapeHTML(o.id)}</td><td>${new Date(o.created_at).toLocaleDateString('id-ID')}</td><td>${escapeHTML(o.metode_pembayaran||'-')}</td><td>${money(o.jumlah_bayar||o.total)}</td><td><span class="status-pill success">Berhasil</span></td><td><button class="btn btn-small btn-light" onclick="viewOrder(${Number(o.id)})">Detail Pesanan</button></td></tr>`).join('')}</tbody></table></div>`:'<div class="empty-state"><i class="fa-regular fa-credit-card"></i><h3>Belum ada pembayaran berhasil</h3><p>Riwayat akan muncul setelah pembayaran Anda diverifikasi admin.</p></div>'}</div>`;
+ }
+ if(tab==='custom')body=`<div class="dash-top"><div><h1>Pesanan Kustom</h1><p>Periksa penawaran dari admin, lalu terima atau tolak.</p></div><button class="btn btn-small" onclick="showView('custom')">Permintaan Baru</button></div><div class="dash-card">${customPesanan.length?customPesanan.map(o=>{const status=String(o.status_penawaran||'Menunggu Estimasi');const canDecide=status==='Menunggu Persetujuan Pelanggan'&&o.estimasi_harga!=null&&o.estimasi_waktu;return `<div style="padding:16px 0;border-bottom:1px solid var(--line)"><strong>${escapeHTML(o.jenis_furnitur||'Pesanan Kustom')} · #${escapeHTML(o.id)}</strong><p style="margin:7px 0">Ukuran: ${escapeHTML(o.panjang)} × ${escapeHTML(o.lebar)} × ${escapeHTML(o.tinggi)} cm · Bahan: ${escapeHTML(o.bahan_kayu||'-')} · Finishing: ${escapeHTML(o.finishing||'-')}</p><p>${escapeHTML(o.deskripsi_desain||'')}</p><p>Jumlah: ${escapeHTML(o.jumlah||1)} · Status: <strong>${escapeHTML(status)}</strong></p>${o.estimasi_harga!=null?`<p>Penawaran harga: <strong>${money(o.estimasi_harga)}</strong></p>`:''}${o.estimasi_waktu?`<p>Estimasi pengerjaan: ${escapeHTML(o.estimasi_waktu)}</p>`:''}${canDecide?`<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px"><button class="btn btn-small" onclick="decideCustomOrder(${Number(o.id)},'Disetujui')">Terima Penawaran</button><button class="btn btn-small btn-light" onclick="decideCustomOrder(${Number(o.id)},'Ditolak')">Tolak Penawaran</button></div>`:''}</div>`}).join(''):'<p>Belum ada permintaan kustom.</p>'}</div>`;
+ if(tab==='profile')body=`<div class="dash-top"><div><h1>Profil Saya</h1></div></div><div class="dash-card"><p><strong>Nama:</strong> ${name}</p><p><strong>Email:</strong> ${escapeHTML(currentUser?.email||'-')}</p><p><strong>Nomor HP:</strong> ${escapeHTML(currentUser?.phone||'-')}</p><p><strong>Alamat:</strong> ${escapeHTML(currentUser?.address||'-')}</p></div>`;
+ if(tab==='wishlist'){const ids=JSON.parse(localStorage.getItem('furnique_wishlist')||'[]');body=`<div class="dash-top"><div><h1>Daftar Favorit</h1></div></div><div class="product-grid">${produk.filter(p=>ids.includes(p.id)).map(productCard).join('')||'<p>Daftar favorit Anda masih kosong.</p>'}</div>`}
+ content.innerHTML=body;
+}
+async function viewOrder(id){
+ try{
+  const data=await api(`/orders/${encodeURIComponent(id)}/detail`);
+  const order=data.order||data;
+  const items=Array.isArray(data.items)?data.items:(order.items||[]);
+  $('modalRoot').innerHTML=`<div class="modal-backdrop" onclick="if(event.target===this)$('modalRoot').innerHTML='' "><div class="modal" style="max-width:680px"><button class="modal-close" onclick="$('modalRoot').innerHTML=''">×</button><h2>Detail Pesanan #${escapeHTML(order.id)}</h2><p>Tanggal: ${new Date(order.created_at).toLocaleString('id-ID')}</p><p>Status pesanan: <strong>${escapeHTML(order.status_pesanan||order.status||'-')}</strong></p><div class="table-wrap"><table><thead><tr><th>Produk</th><th>Harga</th><th>Jumlah</th><th>Subtotal</th></tr></thead><tbody>${items.map(it=>`<tr><td>${escapeHTML(it.nama_produk||it.product_name||'Produk')}</td><td>${money(it.harga_satuan)}</td><td>${Number(it.jumlah||0)}</td><td>${money(it.subtotal)}</td></tr>`).join('')||'<tr><td colspan="4">Detail produk tidak tersedia.</td></tr>'}</tbody></table></div><p style="margin-top:14px">Biaya pengiriman: ${money(order.biaya_pengiriman||0)}</p><h3>Total: ${money(order.total_harga||order.total||0)}</h3><p>Alamat pengiriman: ${escapeHTML(order.alamat_pengiriman||'-')}</p><p>Status pembayaran: ${escapeHTML(order.status_pembayaran||'-')}</p></div></div>`;
+ }catch(err){toast('Gagal memuat detail pesanan: '+err.message,true)}
+}
+async function decideCustomOrder(id,decision){
+ const label=decision==='Disetujui'?'menerima':'menolak';
+ if(!confirm(`Apakah Anda yakin ingin ${label} penawaran pesanan kustom ini?`))return;
+ try{await api(`/custom-orders/${id}/decision`,{method:'PUT',body:JSON.stringify({decision})});await loadCustomerData();renderCustomer('custom');toast(decision==='Disetujui'?'Penawaran berhasil diterima.':'Penawaran berhasil ditolak.');}
+ catch(err){toast('Gagal memperbarui keputusan: '+err.message,true)}
+}
+
+async function updateOrderStatus(id,status){
+ try{
+  await api(`/orders/${encodeURIComponent(id)}/status`,{method:'PUT',body:JSON.stringify({status_pesanan:status})});
+  await loadAdminData();
+  renderAdmin(window.currentAdminTab||'orders');
+  toast(status==='Diproses'?'Pesanan berhasil diterima.':status==='Ditolak'?'Pesanan berhasil ditolak.':'Status pesanan diperbarui.');
+ }catch(err){toast('Gagal memperbarui status: '+err.message,true)}
+}
+function acceptOrder(id){
+ if(!confirm(`Terima pesanan #${id}?`))return;
+ updateOrderStatus(id,'Diproses');
+}
+function rejectOrder(id){
+ const alasan=prompt(`Masukkan alasan penolakan pesanan #${id}:`);
+ if(alasan===null)return;
+ if(!alasan.trim()){toast('Alasan penolakan wajib diisi.',true);return;}
+ updateOrderStatus(id,'Ditolak');
+}
+function productModal(id){
+ const p=produk.find(x=>Number(x.id)===Number(id));
+ $('modalRoot').innerHTML=`<div class="modal-backdrop"><div class="modal"><button class="modal-close" onclick="$('modalRoot').innerHTML=''">×</button><h2 style="font:600 22px var(--display)">${p?'Ubah Stok & Harga':'Tambah Produk'}</h2><form id="productForm">
+ ${p?'':`<div class="field"><label>Nama Produk</label><input name="nama_produk" required></div><div class="field"><label>Kategori ID</label><select name="kategori_id"><option value="1">Ruang Keluarga</option><option value="2">Kamar Tidur</option><option value="3">Ruang Makan</option><option value="4">Furnitur Kantor</option><option value="5">Penyimpanan</option><option value="6">Dekorasi</option></select></div><div class="field"><label>Bahan</label><input name="bahan" required></div><div class="field"><label>Dimensi</label><input name="dimensi" required></div><div class="field"><label>Deskripsi</label><textarea name="deskripsi"></textarea></div><div class="field"><label>URL Foto</label><input name="foto"></div>`}
+ <div class="form-grid"><div class="field"><label>Harga</label><input name="harga" type="number" min="0" required value="${p?.price||''}"></div><div class="field"><label>Stok</label><input name="stok" type="number" min="0" required value="${p?.stock||0}"></div></div><button class="btn" style="width:100%">Simpan</button></form></div></div>`;
+ $('productForm').onsubmit=async e=>{e.preventDefault();const d=Object.fromEntries(new FormData(e.target));d.harga=Number(d.harga);d.stok=Number(d.stok);try{await api(p?`/products/${p.id}`:'/products',{method:p?'PUT':'POST',body:JSON.stringify(p?{harga:d.harga,stok:d.stok,status_ketersediaan:d.stok>0?'Tersedia':'Habis'}:d)});$('modalRoot').innerHTML='';await loadProduks();renderAdmin('produk');toast('Data produk berhasil disimpan.')}catch(err){toast(err.message,true)}};
+}
+function renderAdmin(tab){
+ const el=$('adminContent');let html='';
+ if(tab==='overview')html=`<div class="dash-top"><div><h1>Ringkasan Dasbor</h1><p>Data aktual FURNIQUE.</p></div></div><div class="stat-grid"><div class="stat-card"><span>Total Pendapatan</span><strong>${money(orders.filter(o=>o.payment_status==='Berhasil').reduce((a,o)=>a+o.total,0))}</strong></div><div class="stat-card"><span>Total Pesanan</span><strong>${orders.length}</strong></div><div class="stat-card"><span>Total Produk</span><strong>${produk.length}</strong></div><div class="stat-card"><span>Pembayaran Menunggu</span><strong>${orders.filter(o=>o.payment_status==='Menunggu Verifikasi').length}</strong></div></div><div class="dash-card"><h3>Pesanan Terbaru</h3>${orderTable(orders)}</div>`;
+ if(tab==='produk')html=`<div class="dash-top"><div><h1>Produk</h1><p>Kelola katalog dan stok.</p></div><button class="btn btn-small" onclick="productModal()">+ Tambah Produk</button></div><div class="dash-card"><div class="table-wrap"><table><thead><tr><th>Produk</th><th>Kategori</th><th>Harga</th><th>Stok</th><th>Aksi</th></tr></thead><tbody>${produk.map(p=>`<tr><td>${escapeHTML(p.name)}</td><td>${escapeHTML(p.category)}</td><td>${money(p.price)}</td><td>${p.stock}</td><td><button class="btn btn-small btn-light" onclick="productModal(${p.id})">Ubah</button> <button class="btn btn-small" onclick="deleteProduk(${p.id})">Hapus</button></td></tr>`).join('')}</tbody></table></div></div>`;
+ if(tab==='orders'||tab==='shipping')html=`<div class="dash-top"><div><h1>${tab==='orders'?'Pesanan Masuk':'Produksi & Pengiriman'}</h1><p>${tab==='orders'?'Terima atau tolak pesanan yang baru masuk.':'Perbarui perkembangan pesanan yang telah diterima.'}</p></div><button class="btn btn-small btn-light" onclick="loadAdminData().then(()=>renderAdmin('${tab}'))">Muat Ulang</button></div><div class="dash-card">${orders.length?orders.map(o=>`<div style="display:flex;gap:14px;justify-content:space-between;align-items:center;flex-wrap:wrap;padding:15px 0;border-bottom:1px solid var(--line)"><div style="min-width:220px;flex:1"><strong>#${escapeHTML(o.id)}</strong><div style="font-size:11px;color:var(--muted);margin-top:3px">${escapeHTML(o.nama_pelanggan||'Pelanggan')} · ${money(o.total)}</div><div style="margin-top:7px"><span class="status-pill ${o.status==='Selesai'?'success':o.status==='Ditolak'?'danger':'warning'}">${escapeHTML(o.status)}</span></div></div><div style="display:flex;gap:7px;align-items:center;flex-wrap:wrap">${tab==='orders'&&o.status==='Menunggu Konfirmasi'?`<button class="btn btn-small" onclick="acceptOrder(${Number(o.id)})">Terima Pesanan</button><button class="btn btn-small btn-light" onclick="rejectOrder(${Number(o.id)})">Tolak</button>`:tab==='shipping'&&o.status!=='Menunggu Konfirmasi'&&o.status!=='Ditolak'&&o.status!=='Selesai'?`<select class="select" onchange="updateOrderStatus(${Number(o.id)},this.value)">${['Diproses','Dalam Produksi','Siap Dikirim','Dalam Pengiriman','Selesai'].map(st=>`<option value="${st}" ${o.status===st?'selected':''}>${st}</option>`).join('')}</select>`:`<span style="font-size:10px;color:var(--muted)">${o.status==='Ditolak'?'Pesanan ditolak':o.status==='Selesai'?'Pesanan selesai':'Tidak ada aksi'}</span>`}</div></div>`).join(''):'<div class="empty-state"><i class="fa-solid fa-box-open"></i><h3>Belum ada pesanan</h3><p>Pesanan pelanggan akan muncul di sini.</p></div>'}</div>`;
+ if(tab==='payments')html=`<div class="dash-top"><div><h1>Verifikasi Pembayaran</h1><p>Periksa bukti transfer pelanggan, lalu konfirmasi atau tolak pembayaran.</p></div><button class="btn btn-small btn-light" onclick="refreshPayments()">Muat Ulang</button></div><div class="dash-card"><div class="table-wrap"><table><thead><tr><th>Pesanan / Pelanggan</th><th>Metode</th><th>Nominal</th><th>Bukti</th><th>Status</th><th>Aksi</th></tr></thead><tbody>${payments.map(p=>`<tr><td><strong>#${escapeHTML(p.order_id)}</strong><br><small>${escapeHTML(p.nama_pelanggan||'-')}</small><br><small>${escapeHTML(p.daftar_produk||'')}</small></td><td>${escapeHTML(p.metode_pembayaran||'-')}</td><td>${money(p.jumlah_bayar||p.total_harga||0)}</td><td>${p.bukti_transfer?`<a href="${String(p.bukti_transfer).startsWith('http')?escapeHTML(p.bukti_transfer):'/'+encodeURIComponent(p.bukti_transfer)}" target="_blank" rel="noopener">Lihat bukti</a>`:'Belum diunggah'}</td><td>${escapeHTML(p.status_pembayaran||'-')}${p.alasan_penolakan?`<br><small>Alasan: ${escapeHTML(p.alasan_penolakan)}</small>`:''}</td><td>${p.status_pembayaran==='Menunggu Verifikasi'&&p.bukti_transfer?`<button class="btn btn-small" onclick="verifyPayment(${Number(p.id)},'Berhasil')">Konfirmasi</button> <button class="btn btn-small btn-light" onclick="rejectPayment(${Number(p.id)})">Tolak</button>`:'-'}</td></tr>`).join('')||`<tr><td colspan="6" style="text-align:center;padding:28px">Belum ada pembayaran yang masuk.</td></tr>`}</tbody></table></div></div>`;
+ if(tab==='customers')html=`<div class="dash-top"><div><h1>Data Pelanggan</h1><p>Daftar akun pelanggan yang terdaftar di FURNIQUE.</p></div><button class="btn btn-small btn-light" onclick="loadCustomers()">Muat Ulang</button></div><div class="dash-card"><div class="table-wrap"><table><thead><tr><th>Nama Pelanggan</th><th>Email</th><th>No. HP</th><th>Alamat</th><th>Tanggal Daftar</th></tr></thead><tbody>${customers.map(u=>`<tr><td>${escapeHTML(u.nama||'-')}</td><td>${escapeHTML(u.email||'-')}</td><td>${escapeHTML(u.no_hp||'-')}</td><td>${escapeHTML(u.alamat||'-')}</td><td>${u.created_at?new Date(u.created_at).toLocaleDateString('id-ID'):'-'}</td></tr>`).join('')||'<tr><td colspan="5" style="text-align:center;padding:25px">Belum ada pelanggan terdaftar.</td></tr>'}</tbody></table></div><p style="font-size:10px;color:var(--muted)">Total pelanggan: ${customers.length}</p></div>`;
+ if(tab==='custom')html=`<div class="dash-top"><div><h1>Pesanan Kustom</h1></div></div><div class="dash-card">${customPesanan.map(o=>`<form onsubmit="saveCustomOffer(event,${Number(o.id)})" style="padding:12px 0;border-bottom:1px solid var(--line)"><strong>${escapeHTML(o.jenis_furnitur)}</strong> · ${escapeHTML(o.nama_pelanggan||'Pelanggan')}<p>${escapeHTML(o.panjang)} × ${escapeHTML(o.lebar)} × ${escapeHTML(o.tinggi)} cm · ${escapeHTML(o.bahan_kayu)}</p><div class="form-grid"><div class="field"><label>Estimasi Harga</label><input name="estimasi_harga" type="number" value="${o.estimasi_harga||''}" required></div><div class="field"><label>Estimasi Waktu</label><input name="estimasi_waktu" value="${escapeHTML(o.estimasi_waktu||'')}" required></div><div class="field"><label>Status Penawaran</label><input value="${escapeHTML(o.status_penawaran||'Menunggu Estimasi')}" disabled><input type="hidden" name="status_penawaran" value="Menunggu Persetujuan Pelanggan"></div></div><button class="btn btn-small">Simpan Penawaran</button></form>`).join('')||'Belum ada permintaan kustom.'}</div>`;
+ if(tab==='reports')html=`<div class="dash-top"><div><h1>Laporan Penjualan</h1></div></div><div class="dash-card"><p>Data laporan bersumber dari endpoint ringkasan dan penjualan.</p><button class="btn btn-small" onclick="loadReports()">Muat Laporan</button><div id="reportsData"></div></div>`;
+ el.innerHTML=html;
+}
+async function loadCustomers(){try{const data=await api('/users');customers=Array.isArray(data)?data:(data.users||data.data||[]);renderAdmin('customers');}catch(e){console.error('Gagal memuat pelanggan:',e);toast('Gagal memuat data pelanggan: '+e.message,true)}}
+async function loadReports(){try{const [a,b]=await Promise.all([api('/reports/summary'),api('/reports/sales')]);$('reportsData').innerHTML=`<pre>${escapeHTML(JSON.stringify(a,null,2))}</pre>${b.map(x=>`<p>${new Date(x.tanggal).toLocaleDateString('id-ID')} · ${x.jumlah_transaksi} transaksi · ${money(x.pendapatan)}</p>`).join('')}`}catch(e){toast(e.message,true)}}
+async function saveCustomOffer(e,id){e.preventDefault();const d=Object.fromEntries(new FormData(e.target));d.estimasi_harga=Number(d.estimasi_harga);try{await api(`/custom-orders/${id}`,{method:'PUT',body:JSON.stringify(d)});await loadAdminData();renderAdmin('custom');toast('Penawaran custom order diperbarui.')}catch(err){toast(err.message,true)}}
+let ownerSummary = null;
+let ownerSales = [];
+let activeOwnerTab = 'overview';
+
+async function loadOwnerData(){
+ if(!currentUser || currentUser.role!=='owner') return;
+ const results = await Promise.allSettled([
+  api('/reports/summary'),
+  api('/reports/sales'),
+  api('/orders'),
+  api('/payments')
+ ]);
+ const labels = ['ringkasan bisnis','laporan penjualan','transaksi pesanan','pembayaran'];
+ const errors = [];
+ results.forEach((r,i)=>{if(r.status==='rejected') errors.push(`${labels[i]}: ${r.reason?.message||'gagal dimuat'}`)});
+ if(results[0].status==='fulfilled') ownerSummary=results[0].value||{};
+ if(results[1].status==='fulfilled') ownerSales=Array.isArray(results[1].value)?results[1].value:(results[1].value.sales||results[1].value.data||[]);
+ if(results[2].status==='fulfilled'){
+  const rows=Array.isArray(results[2].value)?results[2].value:(results[2].value.orders||results[2].value.data||[]);
+  orders=rows.map(normalizeOrder);
+ }
+ if(results[3].status==='fulfilled') payments=Array.isArray(results[3].value)?results[3].value:(results[3].value.payments||results[3].value.data||[]);
+ if(errors.length) throw new Error(errors.join('; '));
+}
+
+function ownerSetActive(tab){
+ document.querySelectorAll('#view-owner .side-nav button').forEach(b=>b.classList.remove('active'));
+ const index={overview:0,sales:1,transactions:2}[tab];
+ const buttons=document.querySelectorAll('#view-owner .side-nav button');
+ if(index!==undefined && buttons[index]) buttons[index].classList.add('active');
+}
+
+async function ownerTab(tab,btn){
+ if(!currentUser || currentUser.role!=='owner') return toast('Akses khusus Pemilik.',true);
+ activeOwnerTab=tab;
+ document.querySelectorAll('#view-owner .side-nav button').forEach(b=>b.classList.remove('active'));
+ if(btn) btn.classList.add('active'); else ownerSetActive(tab);
+ const el=$('ownerContent');
+ el.innerHTML='<div class="dash-card">Memuat data dari database...</div>';
+ try{
+  await loadOwnerData();
+  renderOwner(tab);
+ }catch(err){
+  renderOwner(tab);
+  toast('Sebagian data Pemilik gagal dimuat: '+err.message,true);
+ }
+}
+
+function renderOwner(tab='overview'){
+ const el=$('ownerContent');
+ if(!el) return;
+ const summary=ownerSummary||{};
+ const rupiah=n=>money(Number(n||0));
+ const paymentByOrder=new Map(payments.map(p=>[String(p.order_id),p]));
+ let html='';
+ if(tab==='overview'){
+  const totalRevenue=Number(summary.total_pendapatan||0);
+  html=`<div class="dash-top"><div><h1>Ringkasan Bisnis</h1><p>Ikhtisar aktivitas dan kinerja usaha FURNIQUE dari database.</p></div><button class="btn btn-small btn-light" onclick="ownerTab('overview')">Muat Ulang</button></div>
+  <div class="stat-grid"><div class="stat-card"><span>Total Pendapatan</span><strong>${rupiah(totalRevenue)}</strong><small>Pembayaran berhasil</small></div><div class="stat-card"><span>Total Pesanan</span><strong>${Number(summary.total_pesanan||orders.length||0)}</strong><small>Seluruh pesanan</small></div><div class="stat-card"><span>Total Produk</span><strong>${Number(summary.total_produk||0)}</strong><small>Produk terdaftar</small></div><div class="stat-card"><span>Pelanggan</span><strong>${Number(summary.total_pelanggan||0)}</strong><small>Akun pelanggan</small></div></div>
+  <div class="stat-grid"><div class="stat-card"><span>Pesanan Menunggu Konfirmasi</span><strong>${Number(summary.pesanan_pending||0)}</strong></div><div class="stat-card"><span>Pembayaran Menunggu Verifikasi</span><strong>${Number(summary.pembayaran_pending||0)}</strong></div></div>
+  <div class="dash-card"><h3>Pesanan Terbaru</h3><div class="table-wrap"><table><thead><tr><th>ID</th><th>Pelanggan</th><th>Tanggal</th><th>Total</th><th>Status Pesanan</th><th>Status Pembayaran</th><th>Detail</th></tr></thead><tbody>${orders.slice(0,8).map(o=>`<tr><td>#${o.id}</td><td>${escapeHTML(o.nama_pelanggan||'-')}</td><td>${o.created_at?new Date(o.created_at).toLocaleDateString('id-ID'):'-'}</td><td>${rupiah(o.total)}</td><td>${escapeHTML(o.status)}</td><td>${escapeHTML(o.payment_status)}</td><td><button class="btn btn-small btn-light" onclick="viewOrder(${o.id})">Lihat</button></td></tr>`).join('')||'<tr><td colspan="7">Belum ada pesanan.</td></tr>'}</tbody></table></div><p style="text-align:right;margin-top:12px"><button class="btn btn-small" onclick="ownerTab('transactions')">Lihat Semua Transaksi</button></p></div>`;
+ } else if(tab==='sales'){
+  const total=ownerSales.reduce((sum,r)=>sum+Number(r.pendapatan||0),0);
+  const count=ownerSales.reduce((sum,r)=>sum+Number(r.jumlah_transaksi||0),0);
+  html=`<div class="dash-top"><div><h1>Laporan Penjualan</h1><p>Rekap penjualan harian berdasarkan pembayaran yang berhasil.</p></div><button class="btn btn-small btn-light" onclick="ownerTab('sales')">Muat Ulang</button></div>
+  <div class="stat-grid"><div class="stat-card"><span>Total Pendapatan pada Rekap</span><strong>${rupiah(total)}</strong></div><div class="stat-card"><span>Jumlah Transaksi</span><strong>${count}</strong></div><div class="stat-card"><span>Hari dengan Penjualan</span><strong>${ownerSales.length}</strong></div></div>
+  <div class="dash-card"><h3>Rincian Penjualan Harian</h3><div class="table-wrap"><table><thead><tr><th>Tanggal</th><th>Jumlah Transaksi</th><th>Pendapatan</th></tr></thead><tbody>${ownerSales.map(r=>`<tr><td>${r.tanggal?new Date(r.tanggal).toLocaleDateString('id-ID'):'-'}</td><td>${Number(r.jumlah_transaksi||0)}</td><td>${rupiah(r.pendapatan)}</td></tr>`).join('')||'<tr><td colspan="3" style="text-align:center">Belum ada penjualan berhasil.</td></tr>'}</tbody></table></div><p style="font-size:10px;color:var(--muted);margin-top:12px">Data laporan mengikuti transaksi dengan status pembayaran Berhasil dari database.</p></div>`;
+ } else if(tab==='transactions'){
+  html=`<div class="dash-top"><div><h1>Transaksi</h1><p>Pemilik dapat memantau seluruh pesanan dan pembayaran tanpa mengubah data operasional.</p></div><button class="btn btn-small btn-light" onclick="ownerTab('transactions')">Muat Ulang</button></div>
+  <div class="dash-card"><div class="table-wrap"><table><thead><tr><th>ID Pesanan</th><th>Tanggal</th><th>Pelanggan</th><th>Produk</th><th>Total</th><th>Metode</th><th>Pembayaran</th><th>Pesanan</th><th>Detail</th></tr></thead><tbody>${orders.map(o=>{const pay=paymentByOrder.get(String(o.id))||{};return `<tr><td>#${o.id}</td><td>${o.created_at?new Date(o.created_at).toLocaleDateString('id-ID'):'-'}</td><td>${escapeHTML(o.nama_pelanggan||'-')}</td><td style="white-space:normal;min-width:160px">${escapeHTML(o.daftar_produk||'-')}</td><td>${rupiah(o.total)}</td><td>${escapeHTML(pay.metode_pembayaran||o.metode_pembayaran||'-')}</td><td>${escapeHTML(pay.status_pembayaran||o.payment_status||'Menunggu Pembayaran')}</td><td>${escapeHTML(o.status)}</td><td><button class="btn btn-small btn-light" onclick="viewOrder(${o.id})">Detail</button></td></tr>`}).join('')||'<tr><td colspan="9" style="text-align:center">Belum ada transaksi.</td></tr>'}</tbody></table></div></div>`;
+ } else {
+  tab='overview'; return renderOwner(tab);
+ }
+ el.innerHTML=html;
+ ownerSetActive(tab);
+}
+
+
+function handleProfileClick(){if(!currentUser)authView('login');else showRoleHome()}
+function showRoleHome(){loadAdminData();if(currentUser?.role==='admin')showView('admin');else if(currentUser?.role==='owner')showView('owner');else showView('account')}
+
+
+// =========================================================
+// FIX INTEGRASI PEMBAYARAN & DATA PELANGGAN FURNIQUE
+// Bagian ini sengaja diletakkan paling akhir agar menggantikan
+// fungsi lama yang belum lengkap / terduplikasi.
+// =========================================================
+function normalizeUser(u={}){
+  const rawRole=String(u.role||'customer').toLowerCase();
+  const roleMap={pelanggan:'customer',customer:'customer',admin:'admin',pemilik:'owner',owner:'owner'};
+  return {...u,id:u.id,nama:u.nama||u.name||'Pelanggan',name:u.name||u.nama||'Pelanggan',
+    email:u.email||'',phone:u.no_hp||u.phone||'',address:u.alamat||u.address||'',
+    role:roleMap[rawRole]||rawRole};
+}
+function normalizeProduct(p={}){
+  const categoryMap={'Living Room':'Ruang Keluarga','Bedroom':'Kamar Tidur','Dining Room':'Ruang Makan','Office Furniture':'Furnitur Kantor','Storage':'Penyimpanan','Decorative Furniture':'Dekorasi'};
+  return {...p,id:Number(p.id),name:p.nama_produk||p.name||'Produk FURNIQUE',
+    category:categoryMap[p.nama_kategori]||p.nama_kategori||p.category||'Furnitur',
+    price:Number(p.harga??p.price??0),stock:Number(p.stok??p.stock??0),
+    material:p.bahan||p.material||'',dimensions:p.dimensi||p.dimensions||'',
+    description:p.deskripsi||p.description||'',image:p.foto||p.image||p.image_url||'',
+    availability:p.status_ketersediaan||p.availability||''};
+}
+function normalizeOrder(o={}){
+  return {...o,id:Number(o.id||o.order_id),order_id:Number(o.id||o.order_id),
+    total:Number(o.total_harga??o.total??0),total_harga:Number(o.total_harga??o.total??0),
+    status:o.status_pesanan||o.status||'Menunggu Konfirmasi',
+    status_pesanan:o.status_pesanan||o.status||'Menunggu Konfirmasi',
+    payment_status:o.status_pembayaran||o.payment_status||'Menunggu Pembayaran',
+    status_pembayaran:o.status_pembayaran||o.payment_status||'Menunggu Pembayaran',
+    bukti_transfer:o.bukti_transfer||'',metode_pembayaran:o.metode_pembayaran||'',
+    created_at:o.created_at||o.tanggal_pesanan||new Date().toISOString()};
+}
+async function loadCustomerData(){
+  if(!currentUser || currentUser.role!=='customer') return;
+  const [orderResult,customResult]=await Promise.allSettled([api('/orders'),api('/custom-orders')]);
+  if(orderResult.status==='fulfilled'){
+    const rows=Array.isArray(orderResult.value)?orderResult.value:(orderResult.value.orders||orderResult.value.data||[]);
+    orders=rows.map(normalizeOrder);
+  } else {
+    console.error('Gagal memuat pesanan pelanggan:',orderResult.reason);
+    throw orderResult.reason;
+  }
+  if(customResult.status==='fulfilled'){
+    const rows=Array.isArray(customResult.value)?customResult.value:(customResult.value.custom_orders||customResult.value.data||[]);
+    customPesanan=rows;
+  } else console.warn('Gagal memuat pesanan kustom:',customResult.reason);
+}
+
+async function loadProduks(){
+  try{
+    const data=await api('/products');
+    const rows=Array.isArray(data)?data:(data.products||data.data||[]);
+    if(rows.length)produk=rows.map(normalizeProduct);
+  }catch(err){console.warn('Produk menggunakan data katalog lokal:',err.message)}
+  renderHome();renderShop();
+}
+async function loadAdminData(){
+  if(!currentUser||!['admin','owner'].includes(currentUser.role))return;
+  const [orderResult,paymentResult,customResult]=await Promise.allSettled([
+    api('/orders'),api('/payments'),api('/custom-orders')
+  ]);
+  if(orderResult.status==='fulfilled'){
+    const rows=Array.isArray(orderResult.value)?orderResult.value:(orderResult.value.orders||orderResult.value.data||[]);
+    orders=rows.map(normalizeOrder);
+  } else console.error('Gagal memuat pesanan admin:',orderResult.reason);
+  if(paymentResult.status==='fulfilled'){
+    const rows=Array.isArray(paymentResult.value)?paymentResult.value:(paymentResult.value.payments||paymentResult.value.data||[]);
+    payments=rows;
+  } else console.error('Gagal memuat pembayaran admin:',paymentResult.reason);
+  if(customResult.status==='fulfilled'){
+    const rows=Array.isArray(customResult.value)?customResult.value:(customResult.value.custom_orders||customResult.value.data||[]);
+    customPesanan=rows;
+  }
+  await loadProduks();
+}
+async function loadCurrentUser(){
+  try{
+    const data=await api('/me');
+    if(data?.user){
+      currentUser=normalizeUser(data.user);
+      if(currentUser.role==='customer')await loadCustomerData();
+      else if(currentUser.role==='owner')await loadOwnerData();
+      else await loadAdminData();
+    }
+  }catch(err){/* Pengunjung yang belum login tetap dapat melihat katalog. */}
+}
+async function finishAuth(user){
+  currentUser=normalizeUser(user);
+  if(currentUser.role==='customer')await loadCustomerData();
+  else if(currentUser.role==='owner')await loadOwnerData();
+  else await loadAdminData();
+  showRoleHome();
+  toast(`Selamat datang, ${currentUser.nama||'Pelanggan'}!`);
+}
+function showRoleHome(){
+  if(!currentUser){showView('home');return;}
+  if(currentUser.role==='admin'){showView('admin');renderAdmin('overview');}
+  else if(currentUser.role==='owner'){showView('owner');renderOwner('overview');if(!ownerSummary)ownerTab('overview');}
+  else {showView('account');renderCustomer('overview');}
+}
+async function customerTab(tab,btn){
+  activeCustomerTab=tab;
+  document.querySelectorAll('#customerSidebar .side-nav button').forEach(b=>b.classList.remove('active'));
+  if(btn)btn.classList.add('active');
+  await loadCustomerData();
+  renderCustomer(tab);
+}
+function orderTable(list){
+  if(!Array.isArray(list)||!list.length)return '<div class="empty-state"><i class="fa-solid fa-box-open"></i><h3>Belum ada pesanan</h3><p>Pesanan Anda akan ditampilkan di sini.</p></div>';
+  return `<div class="table-wrap"><table><thead><tr><th>ID Pesanan</th><th>Tanggal</th><th>Total</th><th>Status Pesanan</th><th>Status Pembayaran</th><th>Aksi</th></tr></thead><tbody>${list.map(raw=>{
+    const o=normalizeOrder(raw),id=Number(o.id);
+    const ps=String(o.payment_status||'Menunggu Pembayaran').trim();
+    const paid=['Berhasil','Lunas','Sudah Dibayar'].includes(ps);
+    const waiting=['Menunggu Verifikasi','Diproses Admin'].includes(ps);
+    const rejected=ps==='Ditolak';
+    const cancelled=['Ditolak','Dibatalkan'].includes(o.status);
+    let action='';
+    if(paid)action='<span class="status-pill success">Lunas</span>';
+    else if(waiting)action='<span class="status-pill warning">Bukti terkirim · Menunggu admin</span>';
+    else if(!cancelled)action=`<button class="btn btn-small" onclick="paymentUpload(${id})"><i class="fa-solid fa-credit-card"></i> ${rejected?'Bayar Ulang':'Bayar Sekarang'}</button>`;
+    else action='<span class="status-pill danger">Pesanan dibatalkan</span>';
+    return `<tr><td>#${escapeHTML(id)}</td><td>${new Date(o.created_at).toLocaleDateString('id-ID')}</td><td>${money(o.total)}</td><td><span class="status-pill warning">${escapeHTML(o.status)}</span></td><td>${escapeHTML(ps)}</td><td style="min-width:185px">${action}<br><button class="btn btn-small btn-light" style="margin-top:5px" onclick="viewOrder('${id}')">Detail Pesanan</button></td></tr>`;
+  }).join('')}</tbody></table></div>`;
+}
+async function refreshPayments(){
+  try{
+    const data=await api('/payments');
+    payments=Array.isArray(data)?data:(data.payments||data.data||[]);
+    renderAdmin('payments');
+    toast('Daftar pembayaran berhasil dimuat.');
+  }catch(err){toast('Gagal memuat pembayaran: '+err.message,true)}
+}
+async function adminTab(tab,btn){
+  document.querySelectorAll('#adminSidebar .side-nav button').forEach(b=>b.classList.remove('active'));
+  if(btn)btn.classList.add('active');
+  window.currentAdminTab=tab;
+  if(tab==='customers'){await loadCustomers();return;}
+  if(tab==='payments'){await refreshPayments();return;}
+  if(['orders','shipping','overview','custom','produk'].includes(tab)){
+    await loadAdminData();
+  }
+  renderAdmin(tab);
+}
+
+async function verifyPayment(id,status){
+  try{
+    await api(`/payments/${id}/verify`,{method:'PUT',body:JSON.stringify({status_pembayaran:status})});
+    await loadAdminData();renderAdmin('payments');
+    toast('Pembayaran berhasil dikonfirmasi.');
+  }catch(err){toast('Gagal mengonfirmasi pembayaran: '+err.message,true)}
+}
+async function rejectPayment(id){
+  const alasan=prompt('Masukkan alasan penolakan pembayaran:');
+  if(alasan===null)return;
+  if(!alasan.trim()){toast('Alasan penolakan wajib diisi.',true);return;}
+  try{
+    await api(`/payments/${id}/verify`,{method:'PUT',body:JSON.stringify({status_pembayaran:'Ditolak',alasan_penolakan:alasan.trim()})});
+    await loadAdminData();renderAdmin('payments');
+    toast('Pembayaran ditolak. Pelanggan dapat mengunggah bukti yang benar.');
+  }catch(err){toast('Gagal menolak pembayaran: '+err.message,true)}
+}
+
+// Sinkronkan status pesanan pelanggan setelah admin melakukan verifikasi.
+// Data dibaca ulang dari database setiap 8 detik selama dashboard pelanggan terbuka.
+if(!window.furniqueCustomerSync){
+  window.furniqueCustomerSync=setInterval(async()=>{
+    if(currentUser?.role==='customer' && $('view-account')?.classList.contains('active')){
+      try{await loadCustomerData();renderCustomer(activeCustomerTab);}catch(err){console.warn('Sinkronisasi status pesanan:',err.message);}
+    }
+  },8000);
+}
+
+$('year').textContent=new Date().getFullYear();
+saveCart();renderHome();renderShop();loadProduks();loadCurrentUser();
+</script>
+</body>
+</html>
