@@ -16,7 +16,7 @@ require('dotenv').config();
 
 const app = express();
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 4000;
 
 // Untuk TiDB Cloud Starter gunakan port 4000 dan DB_SSL=true
 
