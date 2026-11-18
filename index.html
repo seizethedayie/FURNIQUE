@@ -201,13 +201,38 @@ $('checkoutForm').addEventListener('submit',async e=>{
  e.preventDefault();
  if(!currentUser)return authView('login');
  if(!cart.length)return toast('Keranjang masih kosong.',true);
- const fd=new FormData(e.target),shipping=fd.get('shipping')==='express'?100000:50000,t=totals(shipping);
+ const submitButton=e.submitter||e.target.querySelector('button[type=submit]');
+ if(submitButton?.disabled)return;
+ if(submitButton){submitButton.disabled=true;submitButton.dataset.originalText=submitButton.innerHTML;submitButton.textContent='Memproses pesanan...';}
+ const fd=new FormData(e.target),shipping=fd.get('shipping')==='express'?100000:50000;
  const payload={items:cartDetail().map(p=>({product_id:Number(p.id),jumlah:Number(p.qty)})),metode_pengiriman:fd.get('shipping'),biaya_pengiriman:shipping,alamat_pengiriman:fd.get('address'),metode_pembayaran:fd.get('payment')};
+ let result;
  try{
-  const result=await api('/orders',{method:'POST',body:JSON.stringify(payload)});
-  const order={id:result.order_id,total_harga:result.total_harga,status_pesanan:'Menunggu Konfirmasi',created_at:new Date().toISOString(),metode_pembayaran:fd.get('payment')};
-  orders.unshift(order);cart=[];saveCart();await loadCustomerData();toast('Pesanan berhasil dibuat.');showOrderSuccess(order);
- }catch(err){toast(err.message,true)}
+  // Tahap 1: kirim dan simpan pesanan. Jika gagal di sini, pesanan memang belum dikonfirmasi berhasil.
+  result=await api('/orders',{method:'POST',body:JSON.stringify(payload)});
+  if(!result||!result.order_id)throw new Error(result?.message||'Server tidak mengembalikan nomor pesanan.');
+ }catch(err){
+  toast('Pesanan gagal dibuat: '+err.message,true);
+  if(submitButton){submitButton.disabled=false;submitButton.innerHTML=submitButton.dataset.originalText||'Buat Pesanan';}
+  return;
+ }
+
+ // Tahap 2: server sudah mengonfirmasi pesanan tersimpan. Jangan batalkan keberhasilan
+ // hanya karena proses memuat ulang daftar pesanan mengalami gangguan.
+ const order={id:result.order_id,total_harga:result.total_harga,status_pesanan:'Menunggu Konfirmasi',created_at:new Date().toISOString(),metode_pembayaran:fd.get('payment')};
+ orders.unshift(normalizeOrder(order));
+ cart=[];saveCart();
+ toast('Pesanan berhasil dibuat!');
+ showOrderSuccess(order);
+ if(submitButton){submitButton.disabled=false;submitButton.innerHTML=submitButton.dataset.originalText||'Buat Pesanan';}
+
+ // Tahap 3: sinkronisasi daftar pesanan dilakukan terpisah.
+ try{
+  await loadCustomerData();
+  renderCustomer(activeCustomerTab||'overview');
+ }catch(err){
+  console.warn('Pesanan tersimpan, tetapi daftar pesanan belum berhasil disegarkan:',err);
+ }
 });
 function showOrderSuccess(o){$('modalRoot').innerHTML=`<div class="modal-backdrop"><div class="modal"><button class="modal-close" onclick="$('modalRoot').innerHTML=''">×</button><div style="text-align:center;padding:20px"><i class="fa-regular fa-circle-check" style="font-size:42px;color:var(--green)"></i><h2 style="font:600 24px var(--display)">Terima kasih atas pesanan Anda!</h2><p style="color:var(--muted)">Nomor pesanan: <strong>${escapeHTML(o.id||o.order_id||'-')}</strong></p><p style="font-size:12px">Status: Menunggu Konfirmasi</p><button class="btn" onclick="$('modalRoot').innerHTML='';showView('account')">Lihat Pesanan Saya</button></div></div></div>`}
 $('customForm').addEventListener('submit',async e=>{
@@ -224,14 +249,14 @@ $('customForm').addEventListener('submit',async e=>{
  catch(err){toast(err.message,true)}
 });
 function toggleWish(id,btn){btn.classList.toggle('active');btn.innerHTML=btn.classList.contains('active')?'<i class="fa-solid fa-heart"></i>':'<i class="fa-regular fa-heart"></i>';let list=JSON.parse(localStorage.getItem('furnique_wishlist')||'[]');if(list.includes(id))list=list.filter(x=>x!==id);else list.push(id);localStorage.setItem('furnique_wishlist',JSON.stringify(list));toast('Daftar Favorit diperbarui.')}
-function handleProfileClick(){if(!currentUser){showView('login');return}showRoleHome()}
-function showRoleHome(){if(currentUser.role==='admin')showView('admin');else if(currentUser.role==='owner')showView('owner');else showView('account')}
+function legacyHandleProfileClick(){if(!currentUser){showView('login');return}showRoleHome()}
+function legacyShowRoleHome(){if(currentUser.role==='admin')showView('admin');else if(currentUser.role==='owner')showView('owner');else showView('account')}
 function authView(mode='login'){$('modalRoot').innerHTML='';document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));let old=$('view-auth');if(old)old.remove();const section=document.createElement('section');section.id='view-auth';section.className='view active';section.innerHTML=`<div class="auth-wrap"><div class="auth-card"><div class="auth-image"><a class="brand" href="#" onclick="showView('home');return false">${logoMark()}<span class="brand-name">FURNIQUE</span></a></div><div class="auth-form"><a class="brand" href="#" onclick="showView('home');return false">${logoMark()}<span class="brand-name">FURNIQUE</span></a><h2>${mode==='login'?'Selamat datang Kembali':'Buat Akun'}</h2><p class="sub">${mode==='login'?'Masuk untuk melanjutkan pengalaman berbelanja furnitur Anda.':'Bergabunglah dengan FURNIQUE dan wujudkan ruang impian Anda.'}</p><form id="authForm">${mode==='register'?`<div class="field"><label>Nama Lengkap</label><input name="name" required placeholder="Nama lengkap"></div><div class="field"><label>Nomor Telepon</label><input name="phone" required placeholder="08xxxxxxxxxx"></div><div class="field"><label>Alamat</label><input name="address" required placeholder="Alamat"></div>`:''}<div class="field"><label>Alamat Email</label><input type="email" name="email" required placeholder="you@example.com"></div><div class="field"><label>Kata Sandi</label><div style="position:relative"><input type="password" name="password" id="authPassword" required minlength="6" placeholder="Masukkan kata sandi" style="padding-right:45px"><button type="button" class="icon-btn" style="position:absolute;right:4px;top:3px" onclick="togglePassword()"><i class="fa-regular fa-eye"></i></button></div></div>${mode==='register'?`<div class="field"><label>Konfirmasi Kata Sandi</label><input type="password" name="confirm" required minlength="6" placeholder="Ulangi kata sandi"></div>`:`<div style="display:flex;justify-content:space-between;font-size:10px;margin:0 0 12px"><label><input type="checkbox" name="remember"> Ingat Saya</label><button type="button" class="text-link" onclick="toast('Silakan hubungi admin untuk reset password.')">Lupa Kata Sandi?</button></div>`}<div class="auth-error" id="authError"></div><button class="btn" type="submit">${mode==='login'?'MASUK':'BUAT AKUN'}</button></form><div class="auth-switch">${mode==='login'?`Belum punya akun? <button onclick="authView('register')">Buat Akun</button>`:`Sudah punya akun? <button onclick="authView('login')">Masuk</button>`}</div><div class="auth-switch"><button onclick="showView('home')">Kembali ke Beranda</button></div></div></div></div>`;document.querySelector('main').appendChild(section);$('siteFooter').style.display='none';window.scrollTo(0,0);$('authForm').addEventListener('submit',async e=>{e.preventDefault();const fd=new FormData(e.target),email=fd.get('email'),password=fd.get('password');if(mode==='register'&&password!==fd.get('confirm')){$('authError').textContent='Konfirmasi password tidak sama.';return}try{const data=await api(mode==='login'?'/login':'/register',{method:'POST',body:JSON.stringify(mode==='login'?{email,password}:{nama:fd.get('name'),no_hp:fd.get('phone'),alamat:fd.get('address'),email,password})});if(mode==='register'){toast('Registrasi berhasil. Silakan masuk menggunakan akun yang dibuat.');authView('login');return;}currentUser=normalizeUser(data.user||data);finishAuth(currentUser)}catch(err){if(err.message.includes('Failed to fetch')||err.message.includes('NetworkError')){if(mode==='register'){currentUser={name:fd.get('name'),email,phone:fd.get('phone'),address:fd.get('address'),role:'customer',demo:true};finishAuth(currentUser);toast('Mode demo: akun belum disimpan ke database.');return}const demos={'customer@furnique.id':'customer','admin@furnique.id':'admin','owner@furnique.id':'owner'};if(demos[email]&&password==='furnique123'){currentUser={name:email.split('@')[0],email,role:demos[email],demo:true};finishAuth(currentUser);toast('Masuk demo berhasil. Backend belum terhubung.')}else $('authError').textContent='Server belum terhubung. Gunakan akun demo yang tersedia atau jalankan server backend.'}else $('authError').textContent=err.message}})}
 function togglePassword(){const p=$('authPassword');p.type=p.type==='password'?'text':'password'}
-async function finishAuth(user){currentUser=normalizeUser(user);await loadCustomerData();await loadAdminData();showRoleHome();toast(`Selamat datang, ${currentUser.nama||currentUser.name||'FURNIQUE user'}!`)}
+async function legacyFinishAuth(user){currentUser=normalizeUser(user);await loadCustomerData();await loadAdminData();showRoleHome();toast(`Selamat datang, ${currentUser.nama||currentUser.name||'FURNIQUE user'}!`)}
 async function logout(){try{await api('/logout',{method:'POST'});}catch(err){console.warn('Logout server:',err.message)}currentUser=null;orders=[];payments=[];customPesanan=[];showView('home');toast('Anda berhasil logout.')}
-async function customerTab(tab,btn){document.querySelectorAll('#customerSidebar .side-nav button').forEach(b=>b.classList.remove('active'));if(btn)btn.classList.add('active');try{await loadCustomerData()}catch(e){console.warn(e)}renderCustomer(tab)}
-function renderCustomer(tab){
+async function legacyCustomerTab(tab,btn){document.querySelectorAll('#customerSidebar .side-nav button').forEach(b=>b.classList.remove('active'));if(btn)btn.classList.add('active');try{await loadCustomerData()}catch(e){console.warn(e)}renderCustomer(tab)}
+function legacyRenderCustomer(tab){
  const content=$('customerContent'),name=escapeHTML(currentUser?.name||'Pelanggan'),myPesanan=orders;
  let body='';
  if(tab==='overview')body=`<div class="dash-top"><div><h1>Selamat datang kembali, ${name}</h1><p>Berikut informasi terbaru mengenai pesanan Anda.</p></div><button class="btn btn-small" onclick="showView('shop')">Jelajahi Katalog</button></div><div class="stat-grid"><div class="stat-card"><span>Total Pesanan</span><strong>${myPesanan.length}</strong><small>Semua pembelian Anda</small></div><div class="stat-card"><span>Pesanan Aktif</span><strong>${myPesanan.filter(o=>o.status!=='Selesai').length}</strong><small>Sedang diproses</small></div><div class="stat-card"><span>Selesai</span><strong>${myPesanan.filter(o=>o.status==='Selesai').length}</strong><small>Berhasil diselesaikan</small></div><div class="stat-card"><span>Permintaan Kustom</span><strong>${customPesanan.length}</strong><small>Permintaan desain Anda</small></div></div><div class="dash-card"><h3>Pesanan Terbaru</h3>${orderTable(myPesanan)}</div>`;
@@ -242,7 +267,7 @@ function renderCustomer(tab){
  if(tab==='wishlist'){const ids=JSON.parse(localStorage.getItem('furnique_wishlist')||'[]');body=`<div class="dash-top"><div><h1>Daftar Favorit</h1><p>Furnitur yang Anda simpan.</p></div></div><div class="product-grid">${produk.filter(p=>ids.includes(p.id)).map(productCard).join('')||'<p>Daftar favorit Anda masih kosong.</p>'}</div>`}
  content.innerHTML=body;
 }
-function orderTable(list){
+function legacyOrderTable(list){
  if(!list||!list.length)return '<div class="empty-state"><i class="fa-solid fa-box-open"></i><h3>Belum ada pesanan</h3><p>Pesanan Anda akan ditampilkan di sini.</p></div>';
  return `<div class="table-wrap"><table><thead><tr><th>ID Pesanan</th><th>Tanggal</th><th>Total</th><th>Status Pesanan</th><th>Status Pembayaran</th><th>Aksi</th></tr></thead><tbody>${list.map(o=>{
   const id=Number(o.id||o.order_id);
@@ -277,8 +302,8 @@ function renderCustomer(tab){
  if(tab==='overview')body=`<div class="dash-top"><div><h1>Selamat datang kembali, ${name}</h1><p>Berikut informasi terbaru mengenai pesanan Anda.</p></div><button class="btn btn-small" onclick="showView('shop')">Jelajahi Katalog</button></div><div class="stat-grid"><div class="stat-card customer-stat"><div class="customer-stat-copy"><span>Total Pesanan</span><strong>${orders.length}</strong></div><div class="customer-stat-icon"><i class="fa-solid fa-bag-shopping"></i></div></div><div class="stat-card customer-stat"><div class="customer-stat-copy"><span>Pesanan Aktif</span><strong>${orders.filter(o=>o.status!=='Selesai').length}</strong></div><div class="customer-stat-icon"><i class="fa-solid fa-box-open"></i></div></div><div class="stat-card customer-stat"><div class="customer-stat-copy"><span>Selesai</span><strong>${orders.filter(o=>o.status==='Selesai').length}</strong></div><div class="customer-stat-icon"><i class="fa-solid fa-circle-check"></i></div></div><div class="stat-card customer-stat"><div class="customer-stat-copy"><span>Permintaan Kustom</span><strong>${customPesanan.length}</strong></div><div class="customer-stat-icon"><i class="fa-solid fa-ruler-combined"></i></div></div></div><div class="dash-card"><h3>Pesanan Terbaru</h3>${orderTable(orders)}</div>`;
  if(tab==='orders')body=`<div class="dash-top"><div><h1>Pesanan Saya</h1><p>Pantau pesanan, lakukan pembayaran, dan unggah bukti transfer Anda.</p></div><button class="btn btn-small btn-light" onclick="customerTab('orders')">Muat Ulang</button></div><div class="dash-card">${orderTable(orders)}</div>`;
  if(tab==='payments'){
-  const paidOrders=orders.filter(o=>['Berhasil','Lunas','Sudah Dibayar'].includes(String(o.payment_status||o.status_pembayaran||'')));
-  body=`<div class="dash-top"><div><h1>Riwayat Pembayaran</h1><p>Hanya pembayaran yang sudah berhasil diverifikasi admin.</p></div></div><div class="dash-card">${paidOrders.length?`<div class="table-wrap"><table><thead><tr><th>ID Pesanan</th><th>Tanggal</th><th>Metode</th><th>Nominal Dibayar</th><th>Status</th><th>Detail</th></tr></thead><tbody>${paidOrders.map(o=>`<tr><td>#${escapeHTML(o.id)}</td><td>${new Date(o.created_at).toLocaleDateString('id-ID')}</td><td>${escapeHTML(o.metode_pembayaran||'-')}</td><td>${money(o.jumlah_bayar||o.total)}</td><td><span class="status-pill success">Berhasil</span></td><td><button class="btn btn-small btn-light" onclick="viewOrder(${Number(o.id)})">Detail Pesanan</button></td></tr>`).join('')}</tbody></table></div>`:'<div class="empty-state"><i class="fa-regular fa-credit-card"></i><h3>Belum ada pembayaran berhasil</h3><p>Riwayat akan muncul setelah pembayaran Anda diverifikasi admin.</p></div>'}</div>`;
+  const paymentOrders=orders;
+  body=`<div class="dash-top"><div><h1>Riwayat Pembayaran</h1><p>Pantau status pembayaran setiap pesanan, termasuk yang masih menunggu atau perlu diperbaiki.</p></div><button class="btn btn-small btn-light" onclick="customerTab('payments')">Muat Ulang</button></div><div class="dash-card">${paymentOrders.length?`<div class="table-wrap"><table><thead><tr><th>ID Pesanan</th><th>Tanggal</th><th>Metode</th><th>Nominal</th><th>Status</th><th>Detail</th></tr></thead><tbody>${paymentOrders.map(o=>{const status=String(o.payment_status||o.status_pembayaran||'Menunggu Pembayaran');const statusClass=['Berhasil','Lunas','Sudah Dibayar'].includes(status)?'success':status==='Ditolak'?'danger':'warning';return `<tr><td>#${escapeHTML(o.id)}</td><td>${new Date(o.created_at).toLocaleDateString('id-ID')}</td><td>${escapeHTML(o.metode_pembayaran||'-')}</td><td>${money(o.jumlah_bayar||o.total)}</td><td><span class="status-pill ${statusClass}">${escapeHTML(status)}</span></td><td><button class="btn btn-small btn-light" onclick="viewOrder(${Number(o.id)})">Detail Pesanan</button></td></tr>`}).join('')}</tbody></table></div>`:'<div class="empty-state"><i class="fa-regular fa-credit-card"></i><h3>Belum ada riwayat pembayaran</h3><p>Informasi pembayaran akan muncul setelah Anda membuat pesanan.</p></div>'}</div>`;
  }
  if(tab==='custom')body=`<div class="dash-top"><div><h1>Pesanan Kustom</h1><p>Periksa penawaran dari admin, lalu terima atau tolak.</p></div><button class="btn btn-small" onclick="showView('custom')">Permintaan Baru</button></div><div class="dash-card">${customPesanan.length?customPesanan.map(o=>{const status=String(o.status_penawaran||'Menunggu Estimasi');const canDecide=status==='Menunggu Persetujuan Pelanggan'&&o.estimasi_harga!=null&&o.estimasi_waktu;return `<div style="padding:16px 0;border-bottom:1px solid var(--line)"><strong>${escapeHTML(o.jenis_furnitur||'Pesanan Kustom')} · #${escapeHTML(o.id)}</strong><p style="margin:7px 0">Ukuran: ${escapeHTML(o.panjang)} × ${escapeHTML(o.lebar)} × ${escapeHTML(o.tinggi)} cm · Bahan: ${escapeHTML(o.bahan_kayu||'-')} · Finishing: ${escapeHTML(o.finishing||'-')}</p><p>${escapeHTML(o.deskripsi_desain||'')}</p><p>Jumlah: ${escapeHTML(o.jumlah||1)} · Status: <strong>${escapeHTML(status)}</strong></p>${o.estimasi_harga!=null?`<p>Penawaran harga: <strong>${money(o.estimasi_harga)}</strong></p>`:''}${o.estimasi_waktu?`<p>Estimasi pengerjaan: ${escapeHTML(o.estimasi_waktu)}</p>`:''}${canDecide?`<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px"><button class="btn btn-small" onclick="decideCustomOrder(${Number(o.id)},'Disetujui')">Terima Penawaran</button><button class="btn btn-small btn-light" onclick="decideCustomOrder(${Number(o.id)},'Ditolak')">Tolak Penawaran</button></div>`:''}</div>`}).join(''):'<p>Belum ada permintaan kustom.</p>'}</div>`;
  if(tab==='profile')body=`<div class="dash-top"><div><h1>Profil Saya</h1></div></div><div class="dash-card"><p><strong>Nama:</strong> ${name}</p><p><strong>Email:</strong> ${escapeHTML(currentUser?.email||'-')}</p><p><strong>Nomor HP:</strong> ${escapeHTML(currentUser?.phone||'-')}</p><p><strong>Alamat:</strong> ${escapeHTML(currentUser?.address||'-')}</p></div>`;
@@ -421,8 +446,8 @@ function renderOwner(tab='overview'){
 }
 
 
-function handleProfileClick(){if(!currentUser)authView('login');else showRoleHome()}
-function showRoleHome(){loadAdminData();if(currentUser?.role==='admin')showView('admin');else if(currentUser?.role==='owner')showView('owner');else showView('account')}
+function legacyHandleProfileClickIntermediate(){if(!currentUser)authView('login');else showRoleHome()}
+function legacyShowRoleHomeIntermediate(){loadAdminData();if(currentUser?.role==='admin')showView('admin');else if(currentUser?.role==='owner')showView('owner');else showView('account')}
 
 
 // =========================================================
@@ -457,19 +482,23 @@ function normalizeOrder(o={}){
     created_at:o.created_at||o.tanggal_pesanan||new Date().toISOString()};
 }
 async function loadCustomerData(){
-  if(!currentUser || currentUser.role!=='customer') return;
+  if(!currentUser || currentUser.role!=='customer') return false;
   const [orderResult,customResult]=await Promise.allSettled([api('/orders'),api('/custom-orders')]);
+  let ordersLoaded=false;
   if(orderResult.status==='fulfilled'){
     const rows=Array.isArray(orderResult.value)?orderResult.value:(orderResult.value.orders||orderResult.value.data||[]);
     orders=rows.map(normalizeOrder);
+    ordersLoaded=true;
   } else {
+    // Pertahankan data terakhir yang sudah tampil; kegagalan refresh tidak boleh
+    // menghalangi pelanggan membuka menu lain di dashboard.
     console.error('Gagal memuat pesanan pelanggan:',orderResult.reason);
-    throw orderResult.reason;
   }
   if(customResult.status==='fulfilled'){
     const rows=Array.isArray(customResult.value)?customResult.value:(customResult.value.custom_orders||customResult.value.data||[]);
     customPesanan=rows;
   } else console.warn('Gagal memuat pesanan kustom:',customResult.reason);
+  return ordersLoaded;
 }
 
 async function loadProduks(){
@@ -506,33 +535,60 @@ async function loadAdminData(){
 async function loadCurrentUser(){
   try{
     const data=await api('/me');
-    if(data?.user){
-      currentUser=normalizeUser(data.user);
-      if(currentUser.role==='customer')await loadCustomerData();
-      else if(currentUser.role==='owner')await loadOwnerData();
-      else await loadAdminData();
+    if(!data?.user)return;
+    currentUser=normalizeUser(data.user);
+    // Jika sesi masih aktif, langsung arahkan pengguna ke dashboard sesuai role.
+    showRoleHome();
+    try{
+      if(currentUser.role==='customer'){
+        await loadCustomerData();
+        renderCustomer(activeCustomerTab||'overview');
+      }else if(currentUser.role==='owner'){
+        await loadOwnerData();
+        renderOwner(activeOwnerTab||'overview');
+      }else{
+        await loadAdminData();
+        renderAdmin(window.currentAdminTab||'overview');
+      }
+    }catch(dataErr){
+      console.error('Dashboard terbuka, tetapi sebagian data gagal dimuat:',dataErr);
     }
   }catch(err){/* Pengunjung yang belum login tetap dapat melihat katalog. */}
 }
 async function finishAuth(user){
   currentUser=normalizeUser(user);
-  if(currentUser.role==='customer')await loadCustomerData();
-  else if(currentUser.role==='owner')await loadOwnerData();
-  else await loadAdminData();
+  // Tampilkan dashboard lebih dahulu agar kegagalan endpoint data tidak membatalkan navigasi login.
   showRoleHome();
   toast(`Selamat datang, ${currentUser.nama||'Pelanggan'}!`);
+  try{
+    if(currentUser.role==='customer'){
+      await loadCustomerData();
+      renderCustomer(activeCustomerTab||'overview');
+    }else if(currentUser.role==='owner'){
+      await loadOwnerData();
+      renderOwner(activeOwnerTab||'overview');
+    }else{
+      await loadAdminData();
+      renderAdmin(window.currentAdminTab||'overview');
+    }
+  }catch(err){
+    console.error('Dashboard terbuka, tetapi sebagian data gagal dimuat:',err);
+    toast('Dashboard terbuka, tetapi sebagian data belum berhasil dimuat. Coba Muat Ulang.',true);
+  }
 }
 function showRoleHome(){
   if(!currentUser){showView('home');return;}
-  if(currentUser.role==='admin'){showView('admin');renderAdmin('overview');}
-  else if(currentUser.role==='owner'){showView('owner');renderOwner('overview');if(!ownerSummary)ownerTab('overview');}
-  else {showView('account');renderCustomer('overview');}
+  if(currentUser.role==='admin')showView('admin');
+  else if(currentUser.role==='owner')showView('owner');
+  else showView('account');
 }
 async function customerTab(tab,btn){
   activeCustomerTab=tab;
   document.querySelectorAll('#customerSidebar .side-nav button').forEach(b=>b.classList.remove('active'));
   if(btn)btn.classList.add('active');
-  await loadCustomerData();
+  try{await loadCustomerData();}
+  catch(err){console.warn('Penyegaran data pelanggan gagal:',err);}
+  // Tetap render tab yang dipilih walaupun API pesanan sedang bermasalah.
   renderCustomer(tab);
 }
 function orderTable(list){

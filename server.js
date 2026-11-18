@@ -1062,25 +1062,79 @@ app.get('/api/orders', authMiddleware(), async (req, res) => {
             ownerWhere = 'WHERE o.user_id = ?';
             params.push(req.session.user.id);
         }
+
+        // Ambil data inti pesanan terlebih dahulu. Query ini tidak bergantung pada
+        // tabel detail/pembayaran sehingga daftar pesanan tetap bisa ditampilkan.
         const [rows] = await pool.query(`
             SELECT
                 o.id, o.user_id, o.total_harga, o.metode_pengiriman,
                 o.biaya_pengiriman, o.alamat_pengiriman, o.status_pesanan, o.created_at,
-                u.nama AS nama_pelanggan, u.email, u.no_hp,
-                (SELECT GROUP_CONCAT(DISTINCT CONCAT(COALESCE(pr.nama_produk, 'Produk dihapus'), ' (', oi.jumlah, 'x)') SEPARATOR ', ')
-                   FROM order_items oi LEFT JOIN products pr ON pr.id = oi.product_id
-                  WHERE oi.order_id = o.id) AS daftar_produk,
-                pay.id AS payment_id,
-                COALESCE(pay.status_pembayaran, 'Menunggu Pembayaran') AS status_pembayaran,
-                pay.bukti_transfer, pay.metode_pembayaran, pay.alasan_penolakan, pay.jumlah_bayar
+                u.nama AS nama_pelanggan, u.email, u.no_hp
             FROM orders o
-            JOIN users u ON u.id = o.user_id
-            LEFT JOIN payments pay ON pay.id = (
-                SELECT MAX(p2.id) FROM payments p2 WHERE p2.order_id = o.id
-            )
+            INNER JOIN users u ON u.id = o.user_id
             ${ownerWhere}
             ORDER BY o.created_at DESC, o.id DESC
         `, params);
+
+        if (!rows.length) return res.json([]);
+
+        const orderIds = rows.map(row => Number(row.id));
+        const byOrderId = new Map(rows.map(row => [Number(row.id), row]));
+        rows.forEach(row => {
+            row.status_pembayaran = 'Menunggu Pembayaran';
+            row.bukti_transfer = null;
+            row.metode_pembayaran = null;
+            row.jumlah_bayar = null;
+            row.payment_id = null;
+            row.daftar_produk = '';
+        });
+
+        // Informasi pembayaran bersifat tambahan. Jika tabel/kolom pembayaran
+        // bermasalah, data pesanan inti tetap dikirim ke dashboard.
+        try {
+            const [paymentRows] = await pool.query(`
+                SELECT p.id, p.order_id, p.status_pembayaran, p.bukti_transfer,
+                       p.metode_pembayaran, p.jumlah_bayar
+                FROM payments p
+                INNER JOIN (
+                    SELECT order_id, MAX(id) AS latest_id
+                    FROM payments
+                    WHERE order_id IN (?)
+                    GROUP BY order_id
+                ) latest ON latest.latest_id = p.id
+            `, [orderIds]);
+            for (const payment of paymentRows) {
+                const order = byOrderId.get(Number(payment.order_id));
+                if (order) {
+                    order.payment_id = payment.id;
+                    order.status_pembayaran = payment.status_pembayaran || 'Menunggu Pembayaran';
+                    order.bukti_transfer = payment.bukti_transfer || null;
+                    order.metode_pembayaran = payment.metode_pembayaran || null;
+                    order.jumlah_bayar = payment.jumlah_bayar ?? null;
+                }
+            }
+        } catch (paymentErr) {
+            console.error('GET /api/orders: informasi pembayaran tidak dapat dimuat:', paymentErr);
+        }
+
+        // Nama produk untuk ringkasan admin/pemilik juga bersifat tambahan.
+        try {
+            const [itemRows] = await pool.query(`
+                SELECT oi.order_id,
+                       GROUP_CONCAT(DISTINCT CONCAT(COALESCE(pr.nama_produk, 'Produk dihapus'), ' (', oi.jumlah, 'x)') SEPARATOR ', ') AS daftar_produk
+                FROM order_items oi
+                LEFT JOIN products pr ON pr.id = oi.product_id
+                WHERE oi.order_id IN (?)
+                GROUP BY oi.order_id
+            `, [orderIds]);
+            for (const item of itemRows) {
+                const order = byOrderId.get(Number(item.order_id));
+                if (order) order.daftar_produk = item.daftar_produk || '';
+            }
+        } catch (itemErr) {
+            console.error('GET /api/orders: rincian produk tidak dapat dimuat:', itemErr);
+        }
+
         return res.json(rows);
     } catch (err) {
         console.error('GET /api/orders:', err);
