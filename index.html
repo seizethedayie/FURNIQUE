@@ -41,7 +41,7 @@
       <div class="nav-actions">
         <button class="icon-btn search-trigger" aria-label="Cari" onclick="showView('shop');setTimeout(()=>document.getElementById('shopSearch')?.focus(),100)"><i class="fa-solid fa-magnifying-glass"></i></button>
         <button class="icon-btn" aria-label="Keranjang" onclick="showView('cart')"><i class="fa-solid fa-bag-shopping"></i><span class="count" id="cartCount">0</span></button>
-        <button class="icon-btn" aria-label="Akun" onclick="handleProfileClick()"><i class="fa-regular fa-user"></i></button>
+        <button type="button" class="icon-btn" aria-label="Akun" title="Akun Saya" onclick="handleProfileClick()"><i class="fa-regular fa-user"></i></button>
       </div>
     </div>
   </header>
@@ -576,6 +576,20 @@ async function finishAuth(user){
     toast('Dashboard terbuka, tetapi sebagian data belum berhasil dimuat. Coba Muat Ulang.',true);
   }
 }
+function handleProfileClick(){
+  // Ikon profil navbar: arahkan pengguna ke area akun sesuai status login dan perannya.
+  if(!currentUser){
+    authView('login');
+    return;
+  }
+  if(currentUser.role==='customer'){
+    showView('account');
+    customerTab('profile');
+    return;
+  }
+  showRoleHome();
+}
+
 function showRoleHome(){
   if(!currentUser){showView('home');return;}
   if(currentUser.role==='admin')showView('admin');
